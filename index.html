@@ -43,6 +43,7 @@
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -62,7 +63,8 @@
 
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior:smooth; font-size:16px; }
-body { font-family:'Outfit',sans-serif; background:var(--bg); color:var(--t1); overflow-x:hidden; -webkit-font-smoothing:antialiased; }
+body { font-family:'Outfit',sans-serif; background:var(--bg); color:var(--t1); overflow-x:hidden; -webkit-font-smoothing:antialiased; opacity:0; transition:opacity 0.4s ease; }
+body.loaded { opacity:1; }
 
 /* Grain */
 body::after { content:''; position:fixed; inset:0; z-index:9999; pointer-events:none; opacity:0.02;
@@ -139,10 +141,12 @@ nav {
 .hero-actions { display:flex; gap:14px; flex-wrap:wrap; animation:fadeUp 0.8s ease 0.3s both; }
 .btn-primary {
   display:inline-flex; align-items:center; gap:8px;
-  padding:14px 32px; border-radius:10px; background:var(--t1); color:var(--bg);
+  padding:14px 32px; border-radius:10px;
+  background:linear-gradient(135deg, var(--blue), var(--cyan)); color:#fff;
   font-size:14px; font-weight:600; letter-spacing:0.5px; transition:all 0.3s;
+  box-shadow:0 4px 20px rgba(79,140,255,0.25);
 }
-.btn-primary:hover { background:var(--blue); color:#fff; transform:translateY(-2px); box-shadow:0 12px 30px rgba(79,140,255,0.2); }
+.btn-primary:hover { transform:translateY(-2px); box-shadow:0 12px 36px rgba(79,140,255,0.4); }
 .btn-secondary {
   display:inline-flex; align-items:center; gap:8px;
   padding:14px 32px; border-radius:10px; border:1px solid var(--border); color:var(--t2);
@@ -205,7 +209,7 @@ nav {
 @keyframes fadeUp { from{opacity:0;transform:translateY(24px);} to{opacity:1;transform:translateY(0);} }
 
 /* ════════════ HOW IT WORKS ════════════ */
-.how { padding:120px 0; position:relative; }
+.how { padding:120px 0; position:relative; background:linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%); }
 .how::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:var(--border); }
 .section-eyebrow {
   font-family:'JetBrains Mono'; font-size:11px; letter-spacing:4px; text-transform:uppercase;
@@ -241,7 +245,7 @@ nav {
 .feat p { font-size:13px; color:var(--t2); line-height:1.65; }
 
 /* ════════════ PRICING ════════════ */
-.pricing { padding:120px 0; position:relative; }
+.pricing { padding:120px 0; position:relative; background:var(--bg); }
 .pricing::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:var(--border); }
 .price-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
 .price-card {
@@ -275,7 +279,7 @@ nav {
 .price-btn-secondary:hover { border-color:var(--blue); color:var(--blue); }
 
 /* ════════════ WHO IT'S FOR ════════════ */
-.audience { padding:120px 0; }
+.audience { padding:120px 0; background:linear-gradient(180deg, var(--bg2) 0%, var(--bg) 100%); }
 .aud-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
 .aud-card {
   padding:28px; border-radius:var(--radius); background:var(--surface); border:1px solid var(--border);
@@ -289,26 +293,61 @@ nav {
 /* ════════════ FAQ ════════════ */
 .faq { padding:120px 0; position:relative; }
 .faq::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:var(--border); }
-.faq-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
-.faq-item { padding:24px 28px; border-radius:var(--radius); background:var(--surface); border:1px solid var(--border); }
-.faq-item h3 { font-size:14px; font-weight:700; margin-bottom:8px; }
-.faq-item p { font-size:13px; color:var(--t2); line-height:1.65; }
-.faq-item-full { grid-column:1/-1; }
+.faq-list { max-width:720px; margin:0 auto; display:flex; flex-direction:column; gap:8px; }
+.faq-item {
+  padding:0; border-radius:var(--radius); background:var(--surface); border:1px solid var(--border);
+  overflow:hidden; transition:border-color 0.3s;
+}
+.faq-item.open { border-color:rgba(79,140,255,0.15); }
+.faq-q {
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+  padding:20px 24px; cursor:pointer; user-select:none;
+}
+.faq-q h3 { font-size:14px; font-weight:700; margin:0; }
+.faq-arrow {
+  width:20px; height:20px; flex-shrink:0; transition:transform 0.3s;
+  color:var(--t3); font-size:14px; display:flex; align-items:center; justify-content:center;
+}
+.faq-item.open .faq-arrow { transform:rotate(180deg); color:var(--blue); }
+.faq-a {
+  max-height:0; overflow:hidden; transition:max-height 0.35s ease, padding 0.35s ease;
+  padding:0 24px;
+}
+.faq-item.open .faq-a { max-height:300px; padding:0 24px 20px; }
+.faq-a p { font-size:13px; color:var(--t2); line-height:1.65; }
 
 /* ════════════ FOOTER ════════════ */
 footer {
-  padding:48px 0 32px; border-top:1px solid var(--border);
+  padding:60px 0 32px; border-top:1px solid var(--border); background:var(--bg2);
 }
-.footer-inner { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px; }
-.footer-left {}
-.footer-brand { font-size:16px; font-weight:700; margin-bottom:4px; }
+.footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:40px; }
+.footer-brand { font-size:18px; font-weight:700; margin-bottom:8px; }
 .footer-brand span { color:var(--blue); }
-.footer-tagline { font-family:'Instrument Serif'; font-style:italic; font-size:13px; color:var(--t3); }
-.footer-links { display:flex; gap:24px; flex-wrap:wrap; }
-.footer-links a { font-size:12px; color:var(--t3); transition:color 0.2s; }
-.footer-links a:hover { color:var(--blue); }
-.footer-bottom { text-align:center; margin-top:32px; padding-top:20px; border-top:1px solid var(--border); }
+.footer-tagline { font-family:'Instrument Serif'; font-style:italic; font-size:13px; color:var(--t3); margin-bottom:16px; }
+.footer-badge {
+  display:inline-flex; align-items:center; gap:6px;
+  font-family:'JetBrains Mono'; font-size:9px; letter-spacing:2px; text-transform:uppercase;
+  color:var(--t3); padding:6px 12px; border-radius:6px; border:1px solid var(--border);
+  margin-top:12px;
+}
+.footer-col-title {
+  font-family:'JetBrains Mono'; font-size:10px; letter-spacing:2px; text-transform:uppercase;
+  color:var(--t2); margin-bottom:16px;
+}
+.footer-col a {
+  display:block; font-size:13px; color:var(--t3); padding:4px 0; transition:color 0.2s;
+}
+.footer-col a:hover { color:var(--blue); }
+.footer-social { display:flex; gap:12px; margin-top:8px; }
+.footer-social a {
+  width:36px; height:36px; border-radius:8px; border:1px solid var(--border);
+  display:flex; align-items:center; justify-content:center;
+  font-size:16px; color:var(--t3); transition:all 0.2s;
+}
+.footer-social a:hover { border-color:var(--blue); color:var(--blue); background:rgba(79,140,255,0.05); }
+.footer-bottom { text-align:center; margin-top:40px; padding-top:20px; border-top:1px solid var(--border); }
 .footer-bottom p { font-size:11px; color:var(--t3); }
+@media(max-width:768px){ .footer-grid { grid-template-columns:1fr 1fr; gap:28px; } }
 
 /* ════════════ ACCESSIBILITY ════════════ */
 .skip-link{position:absolute;top:-100%;left:50%;transform:translateX(-50%);background:#4f8cff;color:#fff;padding:12px 24px;border-radius:0 0 8px 8px;font-size:14px;font-weight:600;z-index:9999;transition:top 0.3s}
@@ -339,7 +378,17 @@ footer {
 .test-av{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff;flex-shrink:0}
 
 /* Order form */
-.pull-quote-s { padding:60px 0; text-align:center; }
+.pull-quote-s {
+  padding:80px 0; text-align:center;
+  background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border);
+  position:relative; overflow:hidden;
+}
+.pull-quote-s::before {
+  content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+  width:600px; height:400px; border-radius:50%;
+  background:radial-gradient(ellipse, rgba(79,140,255,0.04) 0%, transparent 70%);
+  pointer-events:none;
+}
 .pull-quote-s blockquote {
   font-family:'Instrument Serif'; font-style:italic;
   font-size:clamp(26px,4vw,44px); line-height:1.3;
@@ -375,8 +424,20 @@ footer {
 .live-profiles { padding:100px 0; position:relative; }
 .live-profiles::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:var(--border); }
 .profiles-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
-.pcard-sample { cursor:default; opacity:0.7; }
+.pcard-sample { cursor:default; opacity:0.6; position:relative; }
 .pcard-sample:hover { transform:none; box-shadow:none; }
+.pcard-soon-badge {
+  font-family:'JetBrains Mono'; font-size:9px; letter-spacing:2px; text-transform:uppercase;
+  color:var(--blue); margin-bottom:8px; display:inline-block;
+}
+.pcard-waitlist {
+  margin-top:auto; display:inline-flex; align-items:center; gap:6px;
+  font-size:11px; font-weight:600; color:var(--blue); padding:6px 14px;
+  border-radius:6px; border:1px solid rgba(79,140,255,0.2);
+  background:rgba(79,140,255,0.05); transition:all 0.3s; cursor:pointer;
+  text-decoration:none;
+}
+.pcard-waitlist:hover { background:rgba(79,140,255,0.1); border-color:rgba(79,140,255,0.35); }
 .pcard {
   display:flex; flex-direction:column;
   padding:28px 24px; border-radius:var(--radius);
@@ -407,39 +468,94 @@ footer {
 .pcard-blue .pcard-cta { color:#4f8cff; }
 .pcard-purple .pcard-cta { color:#a855f7; }
 
+/* ════════════ CARD PREVIEW ════════════ */
+.card-preview { padding:120px 0; position:relative; background:var(--bg2); }
+.card-preview::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:var(--border); }
+.preview-grid { display:grid; grid-template-columns:1fr 1fr; gap:40px; margin-top:48px; }
+.preview-card-wrap { perspective:800px; cursor:pointer; }
+.preview-card {
+  width:100%; aspect-ratio:1.6/1; border-radius:16px; position:relative;
+  transition:transform 0.6s cubic-bezier(0.23,1,0.32,1);
+  transform-style:preserve-3d;
+}
+.preview-card-wrap:hover .preview-card { transform:rotateY(180deg); }
+.preview-front, .preview-back {
+  position:absolute; inset:0; border-radius:16px; backface-visibility:hidden;
+  display:flex; flex-direction:column; justify-content:space-between; padding:28px 32px;
+  overflow:hidden;
+}
+.preview-back { transform:rotateY(180deg); }
+.preview-pvc .preview-front {
+  background:linear-gradient(145deg, #f8f6f1, #e8e4db);
+  border:1px solid rgba(0,0,0,0.08);
+  color:#1a1a2e;
+}
+.preview-pvc .preview-back {
+  background:linear-gradient(145deg, #e8e4db, #f8f6f1);
+  border:1px solid rgba(0,0,0,0.08);
+  color:#1a1a2e; align-items:center; justify-content:center; text-align:center;
+}
+.preview-metal .preview-front {
+  background:linear-gradient(145deg, #1a1a2e, #2a2a3e, #1a1a2e);
+  border:1px solid rgba(255,255,255,0.1);
+  color:#f0ede6;
+}
+.preview-metal .preview-back {
+  background:linear-gradient(145deg, #2a2a3e, #1a1a2e, #2a2a3e);
+  border:1px solid rgba(255,255,255,0.1);
+  color:#f0ede6; align-items:center; justify-content:center; text-align:center;
+}
+.preview-label {
+  font-family:'JetBrains Mono'; font-size:10px; letter-spacing:3px; text-transform:uppercase;
+  text-align:center; margin-bottom:12px;
+}
+.preview-pvc .preview-label { color:var(--blue); }
+.preview-metal .preview-label { color:var(--gold); }
+.preview-chip {
+  width:32px; height:22px; border-radius:4px; border:1px solid rgba(180,165,120,0.3);
+  background:linear-gradient(135deg, rgba(220,200,150,0.3), rgba(200,180,130,0.1));
+  position:absolute; top:20px; right:24px;
+}
+.preview-name { font-size:18px; font-weight:700; }
+.preview-role { font-size:9px; letter-spacing:1px; opacity:0.6; margin-top:4px; }
+.preview-bottom { font-size:8px; opacity:0.4; letter-spacing:0.5px; }
+.preview-qr-label { font-family:'JetBrains Mono'; font-size:10px; letter-spacing:2px; opacity:0.5; margin-bottom:8px; }
+.preview-qr-box {
+  width:80px; height:80px; border-radius:8px; border:1px dashed;
+  display:flex; align-items:center; justify-content:center; font-size:9px; opacity:0.4;
+}
+.preview-flip-hint {
+  font-family:'JetBrains Mono'; font-size:10px; color:var(--t3); text-align:center;
+  margin-top:8px; letter-spacing:1px;
+}
+@media(max-width:768px){ .preview-grid { grid-template-columns:1fr; max-width:400px; margin:48px auto 0; } }
+
 /* ════════════ PROCESS / JOURNEY SECTION ════════════ */
 .process { padding:120px 0; position:relative; }
 .process::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:var(--border); }
-.process-steps { display:flex; gap:0; position:relative; }
-.process-steps::before {
-  content:''; position:absolute; top:28px; left:28px; right:28px; height:1px;
-  background:linear-gradient(90deg, var(--blue), var(--cyan)); opacity:0.15;
-  pointer-events:none;
+.timeline { position:relative; max-width:680px; margin:0 auto; padding-left:40px; }
+.timeline::before {
+  content:''; position:absolute; left:15px; top:0; bottom:0; width:2px;
+  background:linear-gradient(180deg, var(--blue), var(--cyan)); opacity:0.15;
 }
-.process-step {
-  flex:1; display:flex; flex-direction:column; align-items:center; text-align:center;
-  padding:0 12px; position:relative;
+.tl-item { position:relative; padding:0 0 40px 32px; }
+.tl-item:last-child { padding-bottom:0; }
+.tl-dot {
+  position:absolute; left:-25px; top:2px;
+  width:32px; height:32px; border-radius:50%;
+  border:2px solid rgba(79,140,255,0.2); background:var(--bg);
+  display:flex; align-items:center; justify-content:center;
+  font-family:'JetBrains Mono'; font-size:10px; color:var(--blue); font-weight:600;
+  z-index:1; transition:all 0.3s;
 }
-.process-step-num {
-  width:56px; height:56px; border-radius:50%; border:1px solid var(--border);
-  background:var(--bg2); display:flex; align-items:center; justify-content:center;
-  font-family:'JetBrains Mono'; font-size:13px; color:var(--blue); font-weight:600;
-  margin-bottom:16px; position:relative; z-index:1;
-  transition: all 0.3s;
-}
-.process-step:hover .process-step-num { border-color:var(--blue); background:rgba(79,140,255,0.06); }
-.process-step-icon { font-size:20px; margin-bottom:12px; }
-.process-step-title { font-size:14px; font-weight:700; margin-bottom:4px; }
-.process-step-sub { font-size:11px; color:var(--t3); line-height:1.5; }
-.process-step-time {
-  margin-top:8px; font-family:'JetBrains Mono'; font-size:9px; letter-spacing:2px;
-  color:var(--blue); text-transform:uppercase;
-}
-@media(max-width:768px){
-  .process-steps { flex-direction:column; gap:28px; }
-  .process-steps::before { display:none; }
-  .process-step { flex-direction:row; text-align:left; gap:16px; align-items:flex-start; }
-  .process-step-num { flex-shrink:0; margin-bottom:0; }
+.tl-item:hover .tl-dot { border-color:var(--blue); background:rgba(79,140,255,0.08); box-shadow:0 0 16px rgba(79,140,255,0.15); }
+.tl-icon { font-size:20px; margin-bottom:6px; }
+.tl-title { font-size:16px; font-weight:700; margin-bottom:4px; }
+.tl-sub { font-size:13px; color:var(--t2); line-height:1.6; }
+.tl-time {
+  margin-top:6px; font-family:'JetBrains Mono'; font-size:9px; letter-spacing:2px;
+  color:var(--blue); text-transform:uppercase; display:inline-block;
+  padding:3px 10px; border-radius:4px; background:rgba(79,140,255,0.06);
 }
 
 /* Executive pricing highlight */
@@ -455,6 +571,32 @@ footer {
 .exec-card .price-features li::before { content:'★'; color:#f5c542; font-size:10px; }
 .price-value-note { font-size:10px; color:var(--t3); text-align:center; margin-top:10px; line-height:1.5; }
 .price-card.featured .price-amount { opacity:1; }
+
+/* ════════════ STICKY ORDER BAR ════════════ */
+.sticky-order {
+  position:fixed; bottom:0; left:0; right:0; z-index:150;
+  background:rgba(6,6,9,0.95); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
+  border-top:1px solid var(--border);
+  padding:12px 0; transform:translateY(100%); transition:transform 0.4s ease;
+}
+.sticky-order.vis { transform:translateY(0); }
+.sticky-order-inner {
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+}
+.sticky-order-text { font-size:14px; font-weight:600; color:var(--t1); }
+.sticky-order-text span { color:var(--t2); font-weight:400; font-size:13px; }
+.sticky-order-btn {
+  display:inline-flex; align-items:center; gap:8px;
+  padding:10px 28px; border-radius:8px;
+  background:linear-gradient(135deg, var(--blue), var(--cyan)); color:#fff;
+  font-size:13px; font-weight:600; letter-spacing:0.5px; transition:all 0.3s;
+  white-space:nowrap; text-decoration:none;
+  box-shadow:0 4px 16px rgba(79,140,255,0.3);
+}
+.sticky-order-btn:hover { transform:translateY(-1px); box-shadow:0 6px 24px rgba(79,140,255,0.4); }
+@media(max-width:768px){
+  .sticky-order-text span { display:none; }
+}
 
 /* ════════════ FLOATING WHATSAPP BUTTON ════════════ */
 .wa-float {
@@ -482,8 +624,7 @@ footer {
   .feat-grid { grid-template-columns:1fr; }
   .price-grid { grid-template-columns:1fr; max-width:400px; margin:0 auto; }
   .aud-grid { grid-template-columns:1fr; }
-  .faq-grid { grid-template-columns:1fr; }
-  .faq-item-full { grid-column:auto; }
+  .faq-list { padding:0; }
   .profiles-grid { grid-template-columns:1fr; }
   .nav-links { display:none; }
   .nav-links.show {
@@ -749,57 +890,94 @@ document.querySelectorAll('.nav-links a').forEach(function(a){
 </section>
 
 
+<!-- ════════════ CARD PREVIEW ════════════ -->
+<section class="card-preview" aria-label="Card design preview">
+  <div class="container">
+    <div class="section-eyebrow">The cards</div>
+    <div class="section-title">See what you'll <em>carry.</em></div>
+    <p class="section-sub">Premium finishes. Custom designs. Hover to flip and see the back.</p>
+    <div class="preview-grid">
+      <div class="preview-card-wrap">
+        <div class="preview-label">PVC Card</div>
+        <div class="preview-card preview-pvc">
+          <div class="preview-front">
+            <div class="preview-chip"></div>
+            <div>
+              <div class="preview-name">Your Name</div>
+              <div class="preview-role">YOUR TITLE · YOUR COMPANY</div>
+            </div>
+            <div class="preview-bottom">+91 XXXXX XXXXX &nbsp;·&nbsp; email@company.com &nbsp;·&nbsp; linkedin.com/in/you</div>
+          </div>
+          <div class="preview-back">
+            <div class="preview-qr-label">SCAN ME</div>
+            <div class="preview-qr-box">QR</div>
+          </div>
+        </div>
+        <div class="preview-flip-hint">Hover to flip</div>
+      </div>
+      <div class="preview-card-wrap">
+        <div class="preview-label">Metal Card</div>
+        <div class="preview-card preview-metal">
+          <div class="preview-front">
+            <div class="preview-chip"></div>
+            <div>
+              <div class="preview-name">Your Name</div>
+              <div class="preview-role">YOUR TITLE · YOUR COMPANY</div>
+            </div>
+            <div class="preview-bottom">+91 XXXXX XXXXX &nbsp;·&nbsp; email@company.com &nbsp;·&nbsp; linkedin.com/in/you</div>
+          </div>
+          <div class="preview-back">
+            <div class="preview-qr-label">SCAN ME</div>
+            <div class="preview-qr-box">QR</div>
+          </div>
+        </div>
+        <div class="preview-flip-hint">Hover to flip</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ════════════ POST-PURCHASE JOURNEY ════════════ -->
 <section class="process" id="process" aria-label="How your order is fulfilled">
   <div class="container">
     <div class="section-eyebrow">Your journey</div>
     <div class="section-title">From order to <em>first tap.</em></div>
     <p class="section-sub">Here's exactly what happens after you place an order — no guesswork, no delays.</p>
-    <div class="process-steps">
-      <div class="process-step">
-        <div class="process-step-num">01</div>
-        <div>
-          <div class="process-step-icon">🛒</div>
-          <div class="process-step-title">Order Placed</div>
-          <div class="process-step-sub">You submit the form. We receive your details on WhatsApp instantly.</div>
-          <div class="process-step-time">Day 0</div>
-        </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot">01</div>
+        <div class="tl-icon">🛒</div>
+        <div class="tl-title">Order Placed</div>
+        <div class="tl-sub">You submit the form. We receive your details on WhatsApp instantly.</div>
+        <div class="tl-time">Day 0</div>
       </div>
-      <div class="process-step">
-        <div class="process-step-num">02</div>
-        <div>
-          <div class="process-step-icon">📞</div>
-          <div class="process-step-title">Design Call</div>
-          <div class="process-step-sub">We call or WhatsApp you to confirm your profile info, links, and design preferences.</div>
-          <div class="process-step-time">Within 24 hrs</div>
-        </div>
+      <div class="tl-item">
+        <div class="tl-dot">02</div>
+        <div class="tl-icon">📞</div>
+        <div class="tl-title">Design Call</div>
+        <div class="tl-sub">We call or WhatsApp you to confirm your profile info, links, and design preferences.</div>
+        <div class="tl-time">Within 24 hrs</div>
       </div>
-      <div class="process-step">
-        <div class="process-step-num">03</div>
-        <div>
-          <div class="process-step-icon">🌐</div>
-          <div class="process-step-title">Profile Live</div>
-          <div class="process-step-sub">Your digital profile is set up, reviewed with you, and goes live. Share the link instantly.</div>
-          <div class="process-step-time">Within 24 hrs</div>
-        </div>
+      <div class="tl-item">
+        <div class="tl-dot">03</div>
+        <div class="tl-icon">🌐</div>
+        <div class="tl-title">Profile Live</div>
+        <div class="tl-sub">Your digital profile is set up, reviewed with you, and goes live. Share the link instantly.</div>
+        <div class="tl-time">Within 24 hrs</div>
       </div>
-      <div class="process-step">
-        <div class="process-step-num">04</div>
-        <div>
-          <div class="process-step-icon">🏭</div>
-          <div class="process-step-title">Card Production</div>
-          <div class="process-step-sub">Your card is printed, NFC chip programmed, QR added, and quality-checked.</div>
-          <div class="process-step-time">2–3 days</div>
-        </div>
+      <div class="tl-item">
+        <div class="tl-dot">04</div>
+        <div class="tl-icon">🏭</div>
+        <div class="tl-title">Card Production</div>
+        <div class="tl-sub">Your card is printed, NFC chip programmed, QR added, and quality-checked.</div>
+        <div class="tl-time">2–3 days</div>
       </div>
-      <div class="process-step">
-        <div class="process-step-num">05</div>
-        <div>
-          <div class="process-step-icon">🚚</div>
-          <div class="process-step-title">Delivered</div>
-          <div class="process-step-sub">Your card arrives at your door. Tap it — your profile opens in under 2 seconds.</div>
-          <div class="process-step-time">5–7 business days</div>
-        </div>
+      <div class="tl-item">
+        <div class="tl-dot">05</div>
+        <div class="tl-icon">🚚</div>
+        <div class="tl-title">Delivered</div>
+        <div class="tl-sub">Your card arrives at your door. Tap it — your profile opens in under 2 seconds.</div>
+        <div class="tl-time">5–7 business days</div>
       </div>
     </div>
   </div>
@@ -831,22 +1009,25 @@ document.querySelectorAll('.nav-links a').forEach(function(a){
         <div class="pcard-cta">View live card →</div>
       </a>
       <div class="pcard pcard-sample" style="border-top:2px solid;border-image:linear-gradient(90deg,#10b981,#06d6a0) 1;">
+        <div class="pcard-soon-badge">Coming Soon</div>
         <div class="pcard-avatar" style="background:linear-gradient(135deg,#10b981,#06d6a0)">PS</div>
         <div class="pcard-name">Priya Sharma</div>
         <div class="pcard-title">HR Manager · Infosys · Mumbai</div>
-        <div class="pcard-cta" style="opacity:0.4">Sample profile</div>
+        <a href="https://wa.me/919082160882?text=Hi%20Tappd!%20I%27d%20like%20to%20join%20the%20waitlist%20for%20a%20smart%20business%20card." target="_blank" class="pcard-waitlist">Join Waitlist →</a>
       </div>
       <div class="pcard pcard-sample" style="border-top:2px solid;border-image:linear-gradient(90deg,#f43f5e,#fb7185) 1;">
+        <div class="pcard-soon-badge">Coming Soon</div>
         <div class="pcard-avatar" style="background:linear-gradient(135deg,#f43f5e,#fb7185)">VN</div>
         <div class="pcard-name">Dr. Vikram Nair</div>
         <div class="pcard-title">Cardiologist · Kokilaben Hospital</div>
-        <div class="pcard-cta" style="opacity:0.4">Sample profile</div>
+        <a href="https://wa.me/919082160882?text=Hi%20Tappd!%20I%27d%20like%20to%20join%20the%20waitlist%20for%20a%20smart%20business%20card." target="_blank" class="pcard-waitlist">Join Waitlist →</a>
       </div>
       <div class="pcard pcard-sample" style="border-top:2px solid;border-image:linear-gradient(90deg,#f97316,#fb923c) 1;">
+        <div class="pcard-soon-badge">Coming Soon</div>
         <div class="pcard-avatar" style="background:linear-gradient(135deg,#f97316,#fb923c)">🏥</div>
         <div class="pcard-name">Mehta Medicals</div>
         <div class="pcard-title">Brand · Pharmacy &amp; Healthcare</div>
-        <div class="pcard-cta" style="opacity:0.4">Sample profile</div>
+        <a href="https://wa.me/919082160882?text=Hi%20Tappd!%20I%27d%20like%20to%20join%20the%20waitlist%20for%20a%20smart%20business%20card." target="_blank" class="pcard-waitlist">Join Waitlist →</a>
       </div>
     </div>
   </div>
@@ -965,50 +1146,50 @@ document.querySelectorAll('.nav-links a').forEach(function(a){
     <div class="section-eyebrow">FAQ</div>
     <div class="section-title">Questions? <em>Answered.</em></div>
     <p class="section-sub">Everything you need to know before ordering.</p>
-    <div class="faq-grid">
+    <div class="faq-list">
       <div class="faq-item">
-        <h3>Do I need an app to use Tappd?</h3>
-        <p>No. The receiver doesn't need any app. They hold their phone near your card and the profile opens automatically in their browser. Works on iPhone XS+ and all modern Androids.</p>
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><h3>Do I need an app to use Tappd?</h3><span class="faq-arrow">▼</span></div>
+        <div class="faq-a"><p>No. The receiver doesn't need any app. They hold their phone near your card and the profile opens automatically in their browser. Works on iPhone XS+ and all modern Androids.</p></div>
       </div>
       <div class="faq-item">
-        <h3>What if their phone doesn't have NFC?</h3>
-        <p>Every Tappd card includes a QR code on the back. They scan it with their camera for the same experience. 100% of smartphones are covered.</p>
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><h3>What if their phone doesn't have NFC?</h3><span class="faq-arrow">▼</span></div>
+        <div class="faq-a"><p>Every Tappd card includes a QR code on the back. They scan it with their camera for the same experience. 100% of smartphones are covered.</p></div>
       </div>
       <div class="faq-item">
-        <h3>Can I update my info after ordering?</h3>
-        <p>Yes, unlimited times, forever, for free. Your card points to a digital profile that you can edit anytime. New job, new number — just update online. The physical card never needs to change.</p>
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><h3>Can I update my info after ordering?</h3><span class="faq-arrow">▼</span></div>
+        <div class="faq-a"><p>Yes, unlimited times, forever, for free. Your card points to a digital profile that you can edit anytime. New job, new number — just update online. The physical card never needs to change.</p></div>
       </div>
       <div class="faq-item">
-        <h3>How long does the card last?</h3>
-        <p>The NFC chip has 10-year data retention and can be read hundreds of thousands of times. The PVC card is waterproof and highly durable. Designed to outlast your career.</p>
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><h3>How long does the card last?</h3><span class="faq-arrow">▼</span></div>
+        <div class="faq-a"><p>The NFC chip has 10-year data retention and can be read hundreds of thousands of times. The PVC card is waterproof and highly durable. Designed to outlast your career.</p></div>
       </div>
       <div class="faq-item">
-        <h3>How long does delivery take?</h3>
-        <p>5–7 business days from order confirmation. We design your card, set up your digital profile, program the NFC chip, and ship it to your door.</p>
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><h3>How long does delivery take?</h3><span class="faq-arrow">▼</span></div>
+        <div class="faq-a"><p>5–7 business days from order confirmation. We design your card, set up your digital profile, program the NFC chip, and ship it to your door.</p></div>
       </div>
       <div class="faq-item">
-        <h3>Can I order in bulk for my team?</h3>
-        <p>Absolutely. We offer 10–30% discounts on bulk orders of 5+ cards. Contact us via WhatsApp for custom corporate pricing with branded designs and team management.</p>
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><h3>Can I order in bulk for my team?</h3><span class="faq-arrow">▼</span></div>
+        <div class="faq-a"><p>Absolutely. We offer 10–30% discounts on bulk orders of 5+ cards. Contact us via WhatsApp for custom corporate pricing with branded designs and team management.</p></div>
       </div>
       <div class="faq-item">
-        <h3>Is my information secure?</h3>
-        <p>Yes. Your profile only shows what you choose to share. We never sell your data. No login, no tracking cookies, no third-party data collection. You're always in control.</p>
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><h3>Is my information secure?</h3><span class="faq-arrow">▼</span></div>
+        <div class="faq-a"><p>Yes. Your profile only shows what you choose to share. We never sell your data. No login, no tracking cookies, no third-party data collection. You're always in control.</p></div>
       </div>
       <div class="faq-item">
-        <h3>What if I lose my card?</h3>
-        <p>Your digital profile stays live forever. Order a replacement at a discounted reprint fee — the NFC chip is reprogrammed to your existing profile URL, so everything works immediately.</p>
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><h3>What if I lose my card?</h3><span class="faq-arrow">▼</span></div>
+        <div class="faq-a"><p>Your digital profile stays live forever. Order a replacement at a discounted reprint fee — the NFC chip is reprogrammed to your existing profile URL, so everything works immediately.</p></div>
       </div>
       <div class="faq-item">
-        <h3>Can I see how many people tapped my card?</h3>
-        <p>Tap analytics are on our roadmap. For now, the lead capture form lets visitors share their contact with you — so you always know who reached out.</p>
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><h3>Can I see how many people tapped my card?</h3><span class="faq-arrow">▼</span></div>
+        <div class="faq-a"><p>Tap analytics are on our roadmap. For now, the lead capture form lets visitors share their contact with you — so you always know who reached out.</p></div>
       </div>
       <div class="faq-item">
-        <h3>Do you deliver all across India?</h3>
-        <p>Yes, pan-India via courier. Standard delivery is 5–7 business days from order confirmation. We share the tracking link once your card is dispatched.</p>
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><h3>Do you deliver all across India?</h3><span class="faq-arrow">▼</span></div>
+        <div class="faq-a"><p>Yes, pan-India via courier. Standard delivery is 5–7 business days from order confirmation. We share the tracking link once your card is dispatched.</p></div>
       </div>
-      <div class="faq-item faq-item-full">
-        <h3>What's included in the Executive "white-glove setup"?</h3>
-        <p>A Tappd team member personally calls you to build your profile — uploading your photo, setting up all your links, writing your bio, and testing the card before it ships. You don't need to touch a computer. Just review and approve.</p>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><h3>What's included in the Executive "white-glove setup"?</h3><span class="faq-arrow">▼</span></div>
+        <div class="faq-a"><p>A Tappd team member personally calls you to build your profile — uploading your photo, setting up all your links, writing your bio, and testing the card before it ships. You don't need to touch a computer. Just review and approve.</p></div>
       </div>
     </div>
   </div>
@@ -1017,37 +1198,65 @@ document.querySelectorAll('.nav-links a').forEach(function(a){
 
 </main>
 
+<!-- Sticky Order Bar -->
+<div class="sticky-order" id="stickyOrder">
+  <div class="container sticky-order-inner">
+    <div class="sticky-order-text">Ready to stand out? <span>Starting at ₹299</span></div>
+    <a href="#order" class="sticky-order-btn">Order Your Card →</a>
+  </div>
+</div>
+
 <!-- Floating WhatsApp -->
 <a href="https://wa.me/919082160882?text=Hi%20Tappd!%20I%27d%20like%20to%20order%20a%20smart%20business%20card." class="wa-float" target="_blank" aria-label="Chat on WhatsApp">💬</a>
 
 <!-- ════════════ FOOTER ════════════ -->
 <footer>
   <div class="container">
-    <div class="footer-inner">
-      <div class="footer-left">
+    <div class="footer-grid">
+      <div>
         <div class="footer-brand">Tapp<span>d</span></div>
         <div class="footer-tagline">"Paper cards get thrown away. Smart cards get remembered."</div>
-        <div style="margin-top:10px;font-size:11px;color:var(--t3);line-height:1.8">
-          Mumbai, India &nbsp;·&nbsp; Founded by Harsh Padia<br>
-          <a href="mailto:padia.harsh@gmail.com" style="color:var(--blue);text-decoration:none">padia.harsh@gmail.com</a>
+        <div style="font-size:12px;color:var(--t3);line-height:1.8">
+          Founded by Harsh Padia<br>
+          <a href="mailto:padia.harsh@gmail.com" style="color:var(--blue)">padia.harsh@gmail.com</a>
         </div>
+        <div class="footer-badge">🇮🇳 Made in Mumbai</div>
       </div>
-      <div class="footer-links">
+      <div class="footer-col">
+        <div class="footer-col-title">Product</div>
         <a href="#how">How It Works</a>
-        <a href="#process">Process</a>
         <a href="#pricing">Pricing</a>
+        <a href="#process">Process</a>
         <a href="#faq">FAQ</a>
-        <a href="https://instagram.com/Tappd" target="_blank" rel="noopener">Instagram</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Profiles</div>
+        <a href="u/jignesh/" target="_blank">Jignesh Shah</a>
+        <a href="u/kalim/" target="_blank">Dr. Kalim Khan</a>
+        <a href="b/subscriptionloot/" target="_blank">SubscriptionLoot</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Connect</div>
         <a href="https://wa.me/919082160882?text=Hi%20Tappd!" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="https://instagram.com/Tappd" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://linkedin.com/company/tappd" target="_blank" rel="noopener">LinkedIn</a>
+        <div class="footer-social">
+          <a href="https://wa.me/919082160882?text=Hi%20Tappd!" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+          <a href="https://instagram.com/Tappd" target="_blank" rel="noopener" aria-label="Instagram">📷</a>
+          <a href="https://linkedin.com/company/tappd" target="_blank" rel="noopener" aria-label="LinkedIn">💼</a>
+        </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© <span id="yr"></span> Tappd · Mumbai, India · All rights reserved · One tap. Every connection.</p>
+      <p>&copy; <span id="yr"></span> Tappd &middot; Mumbai, India &middot; All rights reserved &middot; One tap. Every connection.</p>
     </div>
   </div>
 </footer>
 
 <script>
+// ═══ Page fade-in ═══
+document.body.classList.add('loaded');
+
 // ═══ Copyright year ═══
 document.getElementById('yr').textContent = new Date().getFullYear();
 
@@ -1063,7 +1272,7 @@ if ('IntersectionObserver' in window) {
     });
   }, { threshold: 0.1 });
 
-  document.querySelectorAll('.step-card, .feat, .price-card, .aud-card, .test-card, .faq-item').forEach(function(el) {
+  document.querySelectorAll('.step-card, .feat, .price-card, .aud-card, .test-card, .faq-item, .tl-item, .preview-card-wrap').forEach(function(el) {
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
     el.style.transition = 'all 0.6s ease';
@@ -1071,7 +1280,12 @@ if ('IntersectionObserver' in window) {
   });
 }
 
-// ═══ Nav scroll effect + back-to-top ═══
+// ═══ Nav scroll effect + back-to-top + sticky order bar ═══
+var pricingEl = document.getElementById('pricing');
+var orderEl = document.getElementById('order');
+var stickyBar = document.getElementById('stickyOrder');
+var waFloat = document.querySelector('.wa-float');
+
 window.addEventListener('scroll', function() {
   var nav = document.querySelector('nav');
   var btt = document.getElementById('btt');
@@ -1083,6 +1297,15 @@ window.addEventListener('scroll', function() {
   if (btt) {
     if (window.scrollY > 500) { btt.classList.add('vis'); }
     else { btt.classList.remove('vis'); }
+  }
+  // Sticky order bar: show after pricing, hide when order form visible
+  if (stickyBar && pricingEl && orderEl) {
+    var pricingBottom = pricingEl.getBoundingClientRect().bottom;
+    var orderTop = orderEl.getBoundingClientRect().top;
+    var show = pricingBottom < 0 && orderTop > window.innerHeight * 0.5;
+    stickyBar.classList.toggle('vis', show);
+    if (waFloat) { waFloat.style.bottom = show ? '68px' : '28px'; }
+    if (btt) { btt.style.bottom = show ? '132px' : '92px'; }
   }
 });
 

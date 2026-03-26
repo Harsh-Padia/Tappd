@@ -1,5 +1,7 @@
 # Tappd — Claude Code Context
 
+- Codex will review your output once you are done
+
 ## Project Overview
 
 Tappd is a static NFC smart business card platform hosted on **GitHub Pages**.
