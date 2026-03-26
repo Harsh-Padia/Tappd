@@ -156,7 +156,7 @@ nav {
 .hero-stat-label { font-size:11px; color:var(--t3); letter-spacing:1px; margin-top:2px; }
 
 /* Hero card visual */
-.hero-card-area { display:flex; justify-content:center; align-items:center; position:relative; animation:fadeUp 1s ease 0.3s both; }
+.hero-card-area { display:flex; justify-content:center; align-items:center; position:relative; animation:fadeUp 1s ease 0.3s both; overflow:hidden; }
 .hero-card-visual { position:relative; }
 
 /* The card */
@@ -293,6 +293,7 @@ nav {
 .faq-item { padding:24px 28px; border-radius:var(--radius); background:var(--surface); border:1px solid var(--border); }
 .faq-item h3 { font-size:14px; font-weight:700; margin-bottom:8px; }
 .faq-item p { font-size:13px; color:var(--t2); line-height:1.65; }
+.faq-item-full { grid-column:1/-1; }
 
 /* ════════════ FOOTER ════════════ */
 footer {
@@ -303,7 +304,7 @@ footer {
 .footer-brand { font-size:16px; font-weight:700; margin-bottom:4px; }
 .footer-brand span { color:var(--blue); }
 .footer-tagline { font-family:'Instrument Serif'; font-style:italic; font-size:13px; color:var(--t3); }
-.footer-links { display:flex; gap:24px; }
+.footer-links { display:flex; gap:24px; flex-wrap:wrap; }
 .footer-links a { font-size:12px; color:var(--t3); transition:color 0.2s; }
 .footer-links a:hover { color:var(--blue); }
 .footer-bottom { text-align:center; margin-top:32px; padding-top:20px; border-top:1px solid var(--border); }
@@ -315,7 +316,7 @@ footer {
 *:focus-visible{outline:2px solid #4f8cff;outline-offset:3px;border-radius:4px}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 
-.btt{position:fixed;bottom:28px;right:28px;width:44px;height:44px;border-radius:50%;background:#0c0c12;border:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;color:#9a97a0;font-size:18px;cursor:pointer;opacity:0;visibility:hidden;transition:all 0.3s;z-index:90}
+.btt{position:fixed;bottom:92px;right:28px;width:44px;height:44px;border-radius:50%;background:#0c0c12;border:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;color:#9a97a0;font-size:18px;cursor:pointer;opacity:0;visibility:hidden;transition:all 0.3s;z-index:90}
 .btt.vis{opacity:1;visibility:visible}.btt:hover{border-color:#4f8cff;color:#4f8cff;transform:translateY(-3px)}
 
 /* Demo */
@@ -362,7 +363,7 @@ footer {
 .fg2 label{font-size:12px;color:#5a5765;font-weight:500}
 .fg2 input,.fg2 select,.fg2 textarea{padding:12px 16px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:#0c0c12;color:#f0ede6;font-family:Outfit,sans-serif;font-size:14px;transition:border-color 0.3s;outline:none}
 .fg2 input:focus,.fg2 select:focus,.fg2 textarea:focus{border-color:#4f8cff}
-.fg2 textarea{resize:vertical;min-height:80px}.fg2 select{appearance:none}
+.fg2 textarea{resize:vertical;min-height:80px}.fg2 select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%239a97a0' stroke-width='1.5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:40px}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .fsb{padding:14px;border-radius:10px;background:#4f8cff;color:#fff;font-size:14px;font-weight:600;transition:all 0.3s;cursor:pointer;border:none;width:100%}.fsb:hover{background:#3a75e8;transform:translateY(-2px)}
 .form-ok{display:none;text-align:center;padding:32px;border-radius:16px;background:rgba(74,222,128,0.05);border:1px solid rgba(74,222,128,0.15)}.form-ok.show{display:block}.form-ok h3{color:#4ade80;font-size:18px;margin-bottom:8px}
@@ -453,7 +454,7 @@ footer {
 .exec-card .price-amount { background:linear-gradient(135deg,#f5c542,#d97706); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
 .exec-card .price-features li::before { content:'★'; color:#f5c542; font-size:10px; }
 .price-value-note { font-size:10px; color:var(--t3); text-align:center; margin-top:10px; line-height:1.5; }
-.price-card.featured .price-amount { opacity:0.7; }
+.price-card.featured .price-amount { opacity:1; }
 
 /* ════════════ FLOATING WHATSAPP BUTTON ════════════ */
 .wa-float {
@@ -482,7 +483,7 @@ footer {
   .price-grid { grid-template-columns:1fr; max-width:400px; margin:0 auto; }
   .aud-grid { grid-template-columns:1fr; }
   .faq-grid { grid-template-columns:1fr; }
-  .faq-item[style] { grid-column:auto; }
+  .faq-item-full { grid-column:auto; }
   .profiles-grid { grid-template-columns:1fr; }
   .nav-links { display:none; }
   .nav-links.show {
@@ -506,7 +507,7 @@ footer {
 <!-- ════════════ NAV ════════════ -->
 <nav role="navigation" aria-label="Main navigation">
   <div class="container nav-inner">
-    <a href="#" class="nav-logo">
+    <a href="./" class="nav-logo">
       <div class="nav-logo-icon">
         <div class="nr nr1"></div><div class="nr nr2"></div><div class="nr nr3"></div><div class="ndot"></div>
       </div>
@@ -524,6 +525,11 @@ footer {
     </div>
   </div>
 </nav>
+<script>
+document.querySelectorAll('.nav-links a').forEach(function(a){
+  a.addEventListener('click',function(){document.querySelector('.nav-links').classList.remove('show');});
+});
+</script>
 
 <!-- ════════════ HERO ════════════ -->
 <main id="main">
@@ -852,7 +858,7 @@ footer {
     <div class="section-eyebrow">What people say</div>
     <div class="section-title">Loved by <em>professionals.</em></div>
     <p class="section-sub">Don't take our word for it.</p>
-    <div class="test-grid" style="grid-template-columns:repeat(3,1fr)">
+    <div class="test-grid">
       <div class="test-card"><div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="test-q">"Used it at a startup event. Tapped my card on an investor's phone — they were genuinely impressed. Got a meeting the next day."</p><div class="test-a"><div class="test-av" style="background:linear-gradient(135deg,#4f8cff,#22d3ee)">AK</div><div><div style="font-size:13px;font-weight:600">Arjun Kapoor</div><div style="font-size:11px;color:#5a5765">Startup Founder · Pune</div></div></div></div>
       <div class="test-card"><div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="test-q">"My students love it. I tap their phone and they instantly get my office hours, course links, and Google Scholar profile."</p><div class="test-a"><div class="test-av" style="background:linear-gradient(135deg,#7c3aed,#a78bfa)">SM</div><div><div style="font-size:13px;font-weight:600">Dr. Sneha Menon</div><div style="font-size:11px;color:#5a5765">University Professor · Bangalore</div></div></div></div>
       <div class="test-card"><div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="test-q">"I meet 15+ clients daily. This replaced my entire paper card budget. Clients save my contact every single time."</p><div class="test-a"><div class="test-av" style="background:linear-gradient(135deg,#f59e0b,#d97706)">RP</div><div><div style="font-size:13px;font-weight:600">Rajesh Patil</div><div style="font-size:11px;color:#5a5765">Real Estate Agent · Mumbai</div></div></div></div>
@@ -1000,7 +1006,7 @@ footer {
         <h3>Do you deliver all across India?</h3>
         <p>Yes, pan-India via courier. Standard delivery is 5–7 business days from order confirmation. We share the tracking link once your card is dispatched.</p>
       </div>
-      <div class="faq-item" style="grid-column:1/-1">
+      <div class="faq-item faq-item-full">
         <h3>What's included in the Executive "white-glove setup"?</h3>
         <p>A Tappd team member personally calls you to build your profile — uploading your photo, setting up all your links, writing your bio, and testing the card before it ships. You don't need to touch a computer. Just review and approve.</p>
       </div>
@@ -1046,21 +1052,24 @@ footer {
 document.getElementById('yr').textContent = new Date().getFullYear();
 
 // ═══ Scroll reveal ═══
-const obs = new IntersectionObserver(function(entries) {
-  entries.forEach(function(e) {
-    if (e.isIntersecting) {
-      e.target.style.opacity = '1';
-      e.target.style.transform = 'translateY(0)';
-    }
-  });
-}, { threshold: 0.1 });
+if ('IntersectionObserver' in window) {
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
 
-document.querySelectorAll('.step-card, .feat, .price-card, .aud-card, .test-card, .faq-item').forEach(function(el) {
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(20px)';
-  el.style.transition = 'all 0.6s ease';
-  obs.observe(el);
-});
+  document.querySelectorAll('.step-card, .feat, .price-card, .aud-card, .test-card, .faq-item').forEach(function(el) {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'all 0.6s ease';
+    obs.observe(el);
+  });
+}
 
 // ═══ Nav scroll effect + back-to-top ═══
 window.addEventListener('scroll', function() {
@@ -1077,23 +1086,6 @@ window.addEventListener('scroll', function() {
   }
 });
 
-// ═══ Mobile menu ═══
-function toggleMenu() {
-  var ham = document.querySelector('.hamburger');
-  var mm = document.querySelector('.mobile-menu');
-  if (!ham || !mm) return;
-  var isOpen = ham.getAttribute('aria-expanded') === 'true';
-  ham.setAttribute('aria-expanded', !isOpen);
-  ham.classList.toggle('active');
-  mm.classList.toggle('open');
-}
-function closeMenu() {
-  var ham = document.querySelector('.hamburger');
-  var mm = document.querySelector('.mobile-menu');
-  if (ham) { ham.setAttribute('aria-expanded', 'false'); ham.classList.remove('active'); }
-  if (mm) { mm.classList.remove('open'); }
-}
-
 // ═══ Simulate NFC Tap ═══
 function doTap() {
   var wait = document.getElementById('demoWait');
@@ -1105,30 +1097,21 @@ function doTap() {
     return;
   }
 
-  // Hide waiting state
+  // Hide waiting state, show profile
   wait.style.display = 'none';
-
-  // Show profile
-  prof.style.display = 'flex';
   prof.classList.add('on');
 
   // Update button
   btn.innerHTML = '&#9989; Profile Opened!';
   btn.classList.add('done');
 
-  // Reset button after 4 seconds
+  // Reset entire demo after 4 seconds
   setTimeout(function() {
-    btn.innerHTML = '&#9889; Simulate Tap';
-    btn.classList.remove('done');
-    btn.style.pointerEvents = 'auto';
-  }, 4000);
-
-  // Reset entire demo after 5 seconds
-  setTimeout(function() {
-    prof.style.display = 'none';
     prof.classList.remove('on');
     wait.style.display = 'block';
-  }, 5000);
+    btn.innerHTML = '&#9889; Simulate Tap';
+    btn.classList.remove('done');
+  }, 4000);
 }
 
 // ═══ Order Form → Google Sheets + WhatsApp ═══
@@ -1210,7 +1193,7 @@ function handleOrder(e) {
 </script>
 
 <!-- Back to top button -->
-<button class="btt" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&#8593;</button>
+<button type="button" class="btt" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&#8593;</button>
 
 </body>
 </html>
