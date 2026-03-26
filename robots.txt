@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://harsh-padia.github.io/Tappd/sitemap.xml

@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tappd — Smart NFC Business Cards | One tap. Every connection.</title>
+<meta name="description" content="India's most affordable NFC smart business cards. One tap shares your entire digital identity. Starting at ₹299. No app needed.">
+
+<!-- Open Graph / Social sharing -->
+<meta property="og:title" content="Tappd — Smart NFC Business Cards | One tap. Every connection.">
+<meta property="og:description" content="India's most affordable NFC smart business cards. One tap shares your entire digital identity. Starting at ₹299. No app needed.">
+<meta property="og:image" content="https://harsh-padia.github.io/Tappd/assets/img/og-home.png">
+<meta property="og:url" content="https://harsh-padia.github.io/Tappd">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Tappd">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Tappd — Smart NFC Business Cards">
+<meta name="twitter:description" content="One tap. Every connection. Starting at ₹299.">
+
+<!-- Favicon -->
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="assets/img/favicon-16x16.png" type="image/png" sizes="16x16">
+<link rel="icon" href="assets/img/favicon-32x32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="assets/img/site.webmanifest">
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Tappd",
+  "description": "India's most affordable NFC smart business cards. One tap shares your entire digital identity.",
+  "url": "https://harsh-padia.github.io/Tappd",
+  "telephone": "+919082160882",
+  "address": { "@type": "PostalAddress", "addressCountry": "IN" },
+  "priceRange": "₹299–₹1299",
+  "sameAs": [
+    "https://instagram.com/Tappd",
+    "https://linkedin.com/company/tappd"
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #060609;
+  --bg2: #0c0c12;
+  --surface: rgba(255,255,255,0.03);
+  --border: rgba(255,255,255,0.06);
+  --blue: #4f8cff;
+  --blue-dim: rgba(79,140,255,0.1);
+  --cyan: #22d3ee;
+  --gold: #f5c542;
+  --t1: #f0ede6;
+  --t2: #9a97a0;
+  --t3: #5a5765;
+  --radius: 16px;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; font-size:16px; }
+body { font-family:'Outfit',sans-serif; background:var(--bg); color:var(--t1); overflow-x:hidden; -webkit-font-smoothing:antialiased; }
+
+/* Grain */
+body::after { content:''; position:fixed; inset:0; z-index:9999; pointer-events:none; opacity:0.02;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+a { color:inherit; text-decoration:none; }
+.container { max-width:1140px; margin:0 auto; padding:0 28px; }
+
+/* ════════════ NAV ════════════ */
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  padding:18px 0;
+  background:rgba(6,6,9,0.7);
+  backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  transition:all 0.3s ease;
+}
+.nav-inner { display:flex; align-items:center; justify-content:space-between; }
+.nav-logo { display:flex; align-items:center; gap:10px; }
+.nav-logo-icon { width:28px; height:28px; position:relative; }
+.nav-logo-icon .nr { position:absolute; border-radius:50%; border:1.2px solid; }
+.nr1 { inset:0; border-color:rgba(79,140,255,0.12)!important; }
+.nr2 { inset:4px; border-color:rgba(79,140,255,0.25)!important; }
+.nr3 { inset:8px; border-color:rgba(79,140,255,0.45)!important; }
+.nav-logo-icon .ndot { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:4px; height:4px; border-radius:50%; background:var(--blue); }
+.nav-brand { font-size:18px; font-weight:700; }
+.nav-brand span { color:var(--blue); }
+.nav-links { display:flex; gap:32px; align-items:center; }
+.nav-links a { font-size:13px; color:var(--t2); font-weight:400; letter-spacing:0.3px; transition:color 0.2s; }
+.nav-links a:hover { color:var(--t1); }
+.nav-cta { font-size:12px; font-weight:600; letter-spacing:1px; text-transform:uppercase;
+  padding:10px 24px; border-radius:8px; background:var(--blue); color:#fff; transition:all 0.3s; }
+.nav-cta:hover { background:#3a75e8; transform:translateY(-1px); }
+.nav-menu { display:none; width:24px; height:18px; flex-direction:column; justify-content:space-between; cursor:pointer; }
+.nav-menu span { height:2px; background:var(--t2); border-radius:2px; transition:0.3s; }
+
+/* ════════════ HERO ════════════ */
+.hero {
+  min-height:100vh; display:flex; align-items:center; position:relative; overflow:hidden;
+  padding-top:80px;
+}
+.hero-glow {
+  position:absolute; top:10%; left:50%; transform:translateX(-50%);
+  width:800px; height:600px;
+  background:radial-gradient(ellipse, rgba(79,140,255,0.06) 0%, transparent 60%);
+  pointer-events:none;
+}
+.hero-glow-2 {
+  position:absolute; bottom:0; right:0; width:500px; height:400px;
+  background:radial-gradient(ellipse, rgba(34,211,238,0.03) 0%, transparent 60%);
+  pointer-events:none;
+}
+.hero-content { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; position:relative; z-index:2; }
+.hero-text {}
+.hero-eyebrow {
+  font-family:'JetBrains Mono'; font-size:11px; letter-spacing:4px; text-transform:uppercase;
+  color:var(--blue); margin-bottom:20px; display:flex; align-items:center; gap:10px;
+  animation:fadeUp 0.8s ease both;
+}
+.hero-eyebrow::before { content:''; width:24px; height:1px; background:var(--blue); opacity:0.5; }
+.hero h1 {
+  font-size:clamp(38px,5vw,56px); font-weight:800; letter-spacing:-2px; line-height:1.05;
+  margin-bottom:20px; animation:fadeUp 0.8s ease 0.1s both;
+}
+.hero h1 em {
+  font-family:'Instrument Serif'; font-style:italic;
+  background:linear-gradient(135deg, var(--blue), var(--cyan));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+}
+.hero-sub {
+  font-size:16px; color:var(--t2); line-height:1.7; max-width:440px; margin-bottom:32px;
+  font-weight:300; animation:fadeUp 0.8s ease 0.2s both;
+}
+.hero-actions { display:flex; gap:14px; flex-wrap:wrap; animation:fadeUp 0.8s ease 0.3s both; }
+.btn-primary {
+  display:inline-flex; align-items:center; gap:8px;
+  padding:14px 32px; border-radius:10px; background:var(--t1); color:var(--bg);
+  font-size:14px; font-weight:600; letter-spacing:0.5px; transition:all 0.3s;
+}
+.btn-primary:hover { background:var(--blue); color:#fff; transform:translateY(-2px); box-shadow:0 12px 30px rgba(79,140,255,0.2); }
+.btn-secondary {
+  display:inline-flex; align-items:center; gap:8px;
+  padding:14px 32px; border-radius:10px; border:1px solid var(--border); color:var(--t2);
+  font-size:14px; font-weight:500; transition:all 0.3s;
+}
+.btn-secondary:hover { border-color:var(--blue); color:var(--blue); }
+.hero-stats {
+  display:flex; gap:36px; margin-top:40px; animation:fadeUp 0.8s ease 0.4s both;
+}
+.hero-stat-num { font-size:28px; font-weight:800; color:var(--t1); }
+.hero-stat-label { font-size:11px; color:var(--t3); letter-spacing:1px; margin-top:2px; }
+
+/* Hero card visual */
+.hero-card-area { display:flex; justify-content:center; align-items:center; position:relative; animation:fadeUp 1s ease 0.3s both; }
+.hero-card-visual { position:relative; }
+
+/* The card */
+.hcard {
+  width:340px; height:204px; border-radius:16px; position:relative; overflow:hidden;
+  background:#f8f6f1; border:1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 40px 80px rgba(0,0,0,0.4), 0 0 80px rgba(79,140,255,0.06);
+  transform:rotate(-4deg); transition:transform 0.6s cubic-bezier(0.23,1,0.32,1);
+}
+.hcard:hover { transform:rotate(0deg) scale(1.03); }
+.hcard-inner { position:absolute; inset:0; padding:24px 28px; display:flex; flex-direction:column; justify-content:space-between; }
+.hcard-accent { position:absolute; left:0; top:20px; bottom:20px; width:3px; background:var(--blue); border-radius:0 2px 2px 0; }
+.hcard-glow { position:absolute; top:-30px; right:-30px; width:120px; height:120px; border-radius:50%;
+  background:radial-gradient(circle, rgba(79,140,255,0.06) 0%, transparent 60%); }
+.hcard-name { font-size:19px; font-weight:700; color:#1a1a2e; }
+.hcard-role { font-size:9px; color:var(--blue); font-weight:500; letter-spacing:1px; margin-top:3px; }
+.hcard-org { font-size:8px; color:rgba(26,26,46,0.3); letter-spacing:1.5px; margin-top:6px; font-family:'JetBrains Mono'; }
+.hcard-bottom { display:flex; justify-content:space-between; align-items:flex-end; }
+.hcard-contact { font-size:8px; color:rgba(26,26,46,0.3); line-height:1.8; }
+.hcard-tap {
+  display:flex; align-items:center; gap:6px;
+  padding:5px 12px; border-radius:6px; background:#1a1a2e;
+}
+.hcard-tap-dot { width:5px; height:5px; border-radius:50%; background:var(--blue); animation:tapPulse 2s ease infinite; }
+.hcard-tap-text { font-family:'JetBrains Mono'; font-size:6px; color:rgba(255,255,255,0.5); letter-spacing:2px; }
+@keyframes tapPulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.4;transform:scale(1.5);} }
+
+/* NFC chip on card */
+.hcard-chip {
+  position:absolute; top:18px; right:22px; width:30px; height:20px; border-radius:4px;
+  border:1px solid rgba(180,165,120,0.3);
+  background:linear-gradient(135deg, rgba(220,200,150,0.2), rgba(200,180,130,0.08));
+}
+.hcard-chip::after { content:''; position:absolute; inset:3px; border:0.5px solid rgba(180,165,120,0.15); border-radius:2px; }
+
+/* Ripple rings */
+.hero-ripple { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:400px; height:400px; pointer-events:none; }
+.hero-ripple .rp {
+  position:absolute; inset:0; border-radius:50%; border:1px solid rgba(79,140,255,0.05);
+  animation:heroRipple 4s ease-out infinite;
+}
+.hero-ripple .rp:nth-child(2) { animation-delay:0.8s; }
+.hero-ripple .rp:nth-child(3) { animation-delay:1.6s; }
+@keyframes heroRipple { 0%{transform:scale(0.6);opacity:1;} 100%{transform:scale(1.3);opacity:0;} }
+
+@keyframes fadeUp { from{opacity:0;transform:translateY(24px);} to{opacity:1;transform:translateY(0);} }
+
+/* ════════════ HOW IT WORKS ════════════ */
+.how { padding:120px 0; position:relative; }
+.how::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:var(--border); }
+.section-eyebrow {
+  font-family:'JetBrains Mono'; font-size:11px; letter-spacing:4px; text-transform:uppercase;
+  color:var(--blue); margin-bottom:14px; display:flex; align-items:center; gap:10px;
+}
+.section-eyebrow::before { content:''; width:20px; height:1px; background:var(--blue); opacity:0.4; }
+.section-title { font-size:clamp(28px,4vw,40px); font-weight:800; letter-spacing:-1px; margin-bottom:12px; }
+.section-title em { font-family:'Instrument Serif'; font-style:italic; color:var(--blue); }
+.section-sub { font-size:15px; color:var(--t2); line-height:1.6; max-width:500px; margin-bottom:48px; }
+
+.steps-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; border-radius:var(--radius); overflow:hidden; }
+.step-card {
+  background:var(--bg2); padding:36px 30px; position:relative; transition:background 0.3s;
+}
+.step-card:hover { background:rgba(79,140,255,0.03); }
+.step-num {
+  font-family:'JetBrains Mono'; font-size:11px; letter-spacing:3px; color:var(--blue); margin-bottom:16px;
+  display:flex; align-items:center; gap:8px;
+}
+.step-num::after { content:''; flex:1; height:1px; background:var(--border); }
+.step-card h3 { font-size:18px; font-weight:700; margin-bottom:8px; }
+.step-card p { font-size:13px; color:var(--t2); line-height:1.6; }
+
+/* ════════════ FEATURES ════════════ */
+.feat-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+.feat {
+  padding:32px; border-radius:var(--radius); background:var(--surface); border:1px solid var(--border);
+  transition:all 0.3s;
+}
+.feat:hover { border-color:rgba(79,140,255,0.12); transform:translateY(-3px); }
+.feat-icon { font-size:28px; margin-bottom:16px; display:block; }
+.feat h3 { font-size:16px; font-weight:700; margin-bottom:6px; }
+.feat p { font-size:13px; color:var(--t2); line-height:1.65; }
+
+/* ════════════ PRICING ════════════ */
+.pricing { padding:120px 0; position:relative; }
+.pricing::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:var(--border); }
+.price-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+.price-card {
+  border-radius:var(--radius); padding:36px 30px; background:var(--surface); border:1px solid var(--border);
+  position:relative; transition:all 0.3s;
+}
+.price-card:hover { border-color:rgba(79,140,255,0.15); transform:translateY(-4px); }
+.price-card.featured { border-color:rgba(79,140,255,0.2); background:rgba(79,140,255,0.03); }
+.price-badge {
+  position:absolute; top:-10px; right:20px;
+  font-family:'JetBrains Mono'; font-size:9px; letter-spacing:2px;
+  background:var(--blue); color:#fff; padding:4px 12px; border-radius:4px;
+}
+.price-tier { font-family:'JetBrains Mono'; font-size:10px; letter-spacing:3px; color:var(--t3); margin-bottom:8px; }
+.price-amount { font-size:48px; font-weight:800; letter-spacing:-2px; margin-bottom:4px; }
+.price-amount span { font-size:18px; font-weight:400; color:var(--t3); }
+.price-period { font-size:12px; color:var(--t3); margin-bottom:20px; }
+.price-features { list-style:none; margin-bottom:28px; }
+.price-features li {
+  font-size:13px; color:var(--t2); padding:8px 0; border-bottom:1px solid var(--border);
+  display:flex; align-items:center; gap:10px;
+}
+.price-features li::before { content:'→'; color:var(--blue); font-size:12px; }
+.price-btn {
+  display:block; text-align:center; padding:12px; border-radius:8px;
+  font-size:13px; font-weight:600; letter-spacing:0.5px; transition:all 0.3s;
+}
+.price-btn-primary { background:var(--t1); color:var(--bg); }
+.price-btn-primary:hover { background:var(--blue); color:#fff; }
+.price-btn-secondary { border:1px solid var(--border); color:var(--t2); }
+.price-btn-secondary:hover { border-color:var(--blue); color:var(--blue); }
+
+/* ════════════ WHO IT'S FOR ════════════ */
+.audience { padding:120px 0; }
+.aud-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.aud-card {
+  padding:28px; border-radius:var(--radius); background:var(--surface); border:1px solid var(--border);
+  transition:all 0.3s;
+}
+.aud-card:hover { border-color:rgba(79,140,255,0.12); }
+.aud-icon { font-size:32px; margin-bottom:14px; }
+.aud-card h3 { font-size:15px; font-weight:700; margin-bottom:4px; }
+.aud-card p { font-size:12px; color:var(--t2); line-height:1.6; }
+
+/* ════════════ FAQ ════════════ */
+.faq { padding:120px 0; position:relative; }
+.faq::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:var(--border); }
+.faq-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+.faq-item { padding:24px 28px; border-radius:var(--radius); background:var(--surface); border:1px solid var(--border); }
+.faq-item h3 { font-size:14px; font-weight:700; margin-bottom:8px; }
+.faq-item p { font-size:13px; color:var(--t2); line-height:1.65; }
+
+/* ════════════ FOOTER ════════════ */
+footer {
+  padding:48px 0 32px; border-top:1px solid var(--border);
+}
+.footer-inner { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px; }
+.footer-left {}
+.footer-brand { font-size:16px; font-weight:700; margin-bottom:4px; }
+.footer-brand span { color:var(--blue); }
+.footer-tagline { font-family:'Instrument Serif'; font-style:italic; font-size:13px; color:var(--t3); }
+.footer-links { display:flex; gap:24px; }
+.footer-links a { font-size:12px; color:var(--t3); transition:color 0.2s; }
+.footer-links a:hover { color:var(--blue); }
+.footer-bottom { text-align:center; margin-top:32px; padding-top:20px; border-top:1px solid var(--border); }
+.footer-bottom p { font-size:11px; color:var(--t3); }
+
+/* ════════════ ACCESSIBILITY ════════════ */
+.skip-link{position:absolute;top:-100%;left:50%;transform:translateX(-50%);background:#4f8cff;color:#fff;padding:12px 24px;border-radius:0 0 8px 8px;font-size:14px;font-weight:600;z-index:9999;transition:top 0.3s}
+.skip-link:focus{top:0}
+*:focus-visible{outline:2px solid #4f8cff;outline-offset:3px;border-radius:4px}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+.btt{position:fixed;bottom:28px;right:28px;width:44px;height:44px;border-radius:50%;background:#0c0c12;border:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;color:#9a97a0;font-size:18px;cursor:pointer;opacity:0;visibility:hidden;transition:all 0.3s;z-index:90}
+.btt.vis{opacity:1;visibility:visible}.btt:hover{border-color:#4f8cff;color:#4f8cff;transform:translateY(-3px)}
+
+/* Demo */
+.demo-s{padding:100px 0;position:relative}.demo-s::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:rgba(255,255,255,0.06)}
+.demo-box{background:#0c0c12;border:1px solid rgba(255,255,255,0.06);border-radius:20px;padding:48px;text-align:center}
+.demo-phone{width:220px;height:440px;margin:0 auto;border-radius:28px;border:2px solid rgba(255,255,255,0.08);background:#060609;overflow:hidden}
+.demo-notch{width:80px;height:6px;background:rgba(255,255,255,0.06);border-radius:3px;margin:10px auto 0}
+.demo-scr{padding:16px;height:calc(100% - 30px);display:flex;flex-direction:column;justify-content:center;align-items:center}
+.demo-prof{display:none;flex-direction:column;align-items:center;gap:10px;width:100%}.demo-prof.on{display:flex}
+.demo-av{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#4f8cff,#22d3ee);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;color:#fff}
+.demo-lnk{padding:8px;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);font-size:10px;color:#9a97a0;cursor:pointer;width:100%;text-align:center;transition:all 0.2s}.demo-lnk:hover{border-color:#4f8cff;color:#4f8cff}
+.tbtn{margin-top:24px;padding:14px 36px;border-radius:10px;background:#4f8cff;color:#fff;font-size:14px;font-weight:600;transition:all 0.3s;display:inline-flex;align-items:center;gap:8px;cursor:pointer;border:none}.tbtn:hover{background:#3a75e8;transform:translateY(-2px)}.tbtn.done{background:#4ade80;pointer-events:none}
+
+/* Testimonials */
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.test-card{padding:28px;border-radius:16px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06)}
+.test-stars{color:#f5c542;font-size:14px;letter-spacing:2px;margin-bottom:12px}
+.test-q{font-size:14px;color:#9a97a0;line-height:1.7;margin-bottom:16px;font-style:italic}
+.test-a{display:flex;align-items:center;gap:10px}
+.test-av{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff;flex-shrink:0}
+
+/* Order form */
+.pull-quote-s { padding:60px 0; text-align:center; }
+.pull-quote-s blockquote {
+  font-family:'Instrument Serif'; font-style:italic;
+  font-size:clamp(26px,4vw,44px); line-height:1.3;
+  color:var(--t1); max-width:720px; margin:0 auto;
+  position:relative; padding:0 24px;
+}
+.pull-quote-s blockquote::before,
+.pull-quote-s blockquote::after {
+  content:'"'; font-size:120px; line-height:0; position:absolute;
+  color:var(--blue); opacity:0.18;
+}
+.pull-quote-s blockquote::before { top:60px; left:-8px; }
+.pull-quote-s blockquote::after  { bottom:-10px; right:-8px; }
+.pull-quote-s cite { display:block; margin-top:16px; font-size:12px; font-style:normal; color:var(--t3); letter-spacing:1px; text-transform:uppercase; }
+.order-s{padding:100px 0;position:relative}.order-s::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:rgba(255,255,255,0.06)}
+.order-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.order-ben{display:flex;flex-direction:column;gap:10px;margin-top:16px}
+.order-b{display:flex;align-items:center;gap:10px;font-size:13px;color:#9a97a0}.order-b::before{content:'\2713';color:#4ade80;font-weight:700}
+.order-form{display:flex;flex-direction:column;gap:14px}
+.fg2{display:flex;flex-direction:column;gap:4px}
+.fg2 label{font-size:12px;color:#5a5765;font-weight:500}
+.fg2 input,.fg2 select,.fg2 textarea{padding:12px 16px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:#0c0c12;color:#f0ede6;font-family:Outfit,sans-serif;font-size:14px;transition:border-color 0.3s;outline:none}
+.fg2 input:focus,.fg2 select:focus,.fg2 textarea:focus{border-color:#4f8cff}
+.fg2 textarea{resize:vertical;min-height:80px}.fg2 select{appearance:none}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fsb{padding:14px;border-radius:10px;background:#4f8cff;color:#fff;font-size:14px;font-weight:600;transition:all 0.3s;cursor:pointer;border:none;width:100%}.fsb:hover{background:#3a75e8;transform:translateY(-2px)}
+.form-ok{display:none;text-align:center;padding:32px;border-radius:16px;background:rgba(74,222,128,0.05);border:1px solid rgba(74,222,128,0.15)}.form-ok.show{display:block}.form-ok h3{color:#4ade80;font-size:18px;margin-bottom:8px}
+
+
+@media(max-width:768px){.test-grid{grid-template-columns:1fr!important}.order-grid{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}}
+
+/* ════════════ LIVE PROFILES SECTION ════════════ */
+.live-profiles { padding:100px 0; position:relative; }
+.live-profiles::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:var(--border); }
+.profiles-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.pcard-sample { cursor:default; opacity:0.7; }
+.pcard-sample:hover { transform:none; box-shadow:none; }
+.pcard {
+  display:flex; flex-direction:column;
+  padding:28px 24px; border-radius:var(--radius);
+  background:var(--surface); border:1px solid var(--border);
+  transition:all 0.3s; text-decoration:none; color:var(--t1);
+  position:relative; overflow:hidden;
+}
+.pcard::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; border-radius:var(--radius) var(--radius) 0 0; }
+.pcard-amber::before { background:linear-gradient(90deg,#f59e0b,#d97706); }
+.pcard-blue::before { background:linear-gradient(90deg,#4f8cff,#22d3ee); }
+.pcard-purple::before { background:linear-gradient(90deg,#a855f7,#7c3aed); }
+.pcard:hover { transform:translateY(-4px); box-shadow:0 16px 40px rgba(0,0,0,0.3); }
+.pcard-avatar {
+  width:48px; height:48px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:18px; font-weight:800; color:#fff; margin-bottom:14px; flex-shrink:0;
+}
+.pcard-amber .pcard-avatar { background:linear-gradient(135deg,#f59e0b,#d97706); }
+.pcard-blue .pcard-avatar { background:linear-gradient(135deg,#4f8cff,#22d3ee); }
+.pcard-purple .pcard-avatar { background:linear-gradient(135deg,#a855f7,#7c3aed); }
+.pcard-name { font-size:15px; font-weight:700; margin-bottom:2px; }
+.pcard-title { font-size:11px; color:var(--t3); letter-spacing:0.3px; margin-bottom:14px; }
+.pcard-cta {
+  margin-top:auto; font-size:11px; font-weight:600; letter-spacing:0.5px;
+  display:flex; align-items:center; gap:6px;
+}
+.pcard-amber .pcard-cta { color:#f59e0b; }
+.pcard-blue .pcard-cta { color:#4f8cff; }
+.pcard-purple .pcard-cta { color:#a855f7; }
+
+/* ════════════ PROCESS / JOURNEY SECTION ════════════ */
+.process { padding:120px 0; position:relative; }
+.process::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:var(--border); }
+.process-steps { display:flex; gap:0; position:relative; }
+.process-steps::before {
+  content:''; position:absolute; top:28px; left:28px; right:28px; height:1px;
+  background:linear-gradient(90deg, var(--blue), var(--cyan)); opacity:0.15;
+  pointer-events:none;
+}
+.process-step {
+  flex:1; display:flex; flex-direction:column; align-items:center; text-align:center;
+  padding:0 12px; position:relative;
+}
+.process-step-num {
+  width:56px; height:56px; border-radius:50%; border:1px solid var(--border);
+  background:var(--bg2); display:flex; align-items:center; justify-content:center;
+  font-family:'JetBrains Mono'; font-size:13px; color:var(--blue); font-weight:600;
+  margin-bottom:16px; position:relative; z-index:1;
+  transition: all 0.3s;
+}
+.process-step:hover .process-step-num { border-color:var(--blue); background:rgba(79,140,255,0.06); }
+.process-step-icon { font-size:20px; margin-bottom:12px; }
+.process-step-title { font-size:14px; font-weight:700; margin-bottom:4px; }
+.process-step-sub { font-size:11px; color:var(--t3); line-height:1.5; }
+.process-step-time {
+  margin-top:8px; font-family:'JetBrains Mono'; font-size:9px; letter-spacing:2px;
+  color:var(--blue); text-transform:uppercase;
+}
+@media(max-width:768px){
+  .process-steps { flex-direction:column; gap:28px; }
+  .process-steps::before { display:none; }
+  .process-step { flex-direction:row; text-align:left; gap:16px; align-items:flex-start; }
+  .process-step-num { flex-shrink:0; margin-bottom:0; }
+}
+
+/* Executive pricing highlight */
+.price-card.exec-card { border-color:rgba(245,197,66,0.25); background:rgba(245,197,66,0.02); }
+.price-card.exec-card:hover { border-color:rgba(245,197,66,0.4); transform:translateY(-6px); }
+.price-badge-gold {
+  position:absolute; top:-10px; right:20px;
+  font-family:'JetBrains Mono'; font-size:9px; letter-spacing:2px;
+  background:linear-gradient(135deg,#f5c542,#d97706); color:#1a1200; padding:4px 12px; border-radius:4px;
+  font-weight:700;
+}
+.exec-card .price-amount { background:linear-gradient(135deg,#f5c542,#d97706); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.exec-card .price-features li::before { content:'★'; color:#f5c542; font-size:10px; }
+.price-value-note { font-size:10px; color:var(--t3); text-align:center; margin-top:10px; line-height:1.5; }
+.price-card.featured .price-amount { opacity:0.7; }
+
+/* ════════════ FLOATING WHATSAPP BUTTON ════════════ */
+.wa-float {
+  position:fixed; bottom:28px; right:28px; z-index:200;
+  width:52px; height:52px; border-radius:50%;
+  background:#25d366; color:#fff;
+  display:flex; align-items:center; justify-content:center;
+  font-size:22px; box-shadow:0 4px 20px rgba(37,211,102,0.4);
+  text-decoration:none; transition:all 0.3s;
+  animation:waPop 0.5s ease 1.5s both;
+}
+.wa-float:hover { transform:scale(1.1); box-shadow:0 6px 28px rgba(37,211,102,0.5); }
+@keyframes waPop { from{opacity:0;transform:scale(0.6)} to{opacity:1;transform:scale(1)} }
+
+/* ════════════ RESPONSIVE ════════════ */
+@media (max-width:768px) {
+  .hero-content { grid-template-columns:1fr; text-align:center; }
+  .hero-sub { margin-left:auto; margin-right:auto; }
+  .hero-actions { justify-content:center; }
+  .hero-stats { justify-content:center; }
+  .hero-eyebrow { justify-content:center; }
+  .hero-card-area { margin-top:40px; }
+  .hcard { width:300px; height:180px; }
+  .steps-grid { grid-template-columns:1fr; }
+  .feat-grid { grid-template-columns:1fr; }
+  .price-grid { grid-template-columns:1fr; max-width:400px; margin:0 auto; }
+  .aud-grid { grid-template-columns:1fr; }
+  .faq-grid { grid-template-columns:1fr; }
+  .faq-item[style] { grid-column:auto; }
+  .profiles-grid { grid-template-columns:1fr; }
+  .nav-links { display:none; }
+  .nav-links.show {
+    display:flex; flex-direction:column; position:fixed;
+    top:64px; left:0; right:0; bottom:0;
+    background:rgba(6,6,9,0.97); backdrop-filter:blur(20px);
+    padding:32px 28px; gap:24px; align-items:flex-start; z-index:99;
+  }
+  .nav-links.show a { font-size:18px; color:var(--t1); }
+  .nav-menu { display:flex; }
+  .section-eyebrow { justify-content:center; }
+  .section-title, .section-sub { text-align:center; }
+  .section-sub { margin-left:auto; margin-right:auto; }
+}
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<!-- ════════════ NAV ════════════ -->
+<nav role="navigation" aria-label="Main navigation">
+  <div class="container nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon">
+        <div class="nr nr1"></div><div class="nr nr2"></div><div class="nr nr3"></div><div class="ndot"></div>
+      </div>
+      <div class="nav-brand">Tap<span>Karo</span></div>
+    </a>
+    <div class="nav-links">
+      <a href="#how">How It Works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#process">Process</a>
+      <a href="#faq">FAQ</a>
+      <a href="#order" class="nav-cta">Order Now</a>
+    </div>
+    <div class="nav-menu" onclick="document.querySelector('.nav-links').classList.toggle('show')">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- ════════════ HERO ════════════ -->
+<main id="main">
+<section class="hero" aria-label="Hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+  <div class="container hero-content">
+    <div class="hero-text">
+      <div class="hero-eyebrow">The future of networking</div>
+      <h1>One Card.<br>Every <em>Connection.</em></h1>
+      <p class="hero-sub">An NFC-enabled business card that shares your entire digital identity with a single tap. No app needed. Updated forever. Starting at just ₹299.</p>
+      <div class="hero-actions">
+        <a href="#order" class="btn-primary">Order Your Card <span>→</span></a>
+        <a href="#demo" class="btn-secondary">Try Live Demo</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-num">2 sec</div>
+          <div class="hero-stat-label">TO SHARE CONTACT</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">ZERO</div>
+          <div class="hero-stat-label">APPS TO DOWNLOAD</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">∞</div>
+          <div class="hero-stat-label">UPDATES FREE</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-card-area">
+      <div class="hero-card-visual">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--t3);text-transform:uppercase;text-align:center;margin-bottom:12px;opacity:0.6">Your card</div>
+        <div class="hero-ripple"><div class="rp"></div><div class="rp"></div><div class="rp"></div></div>
+        <div class="hcard">
+          <div class="hcard-accent"></div>
+          <div class="hcard-glow"></div>
+          <div class="hcard-chip"></div>
+          <div class="hcard-inner">
+            <div>
+              <div class="hcard-name">Your Name</div>
+              <div class="hcard-role">Your Title / Designation</div>
+              <div class="hcard-org">YOUR ORGANIZATION</div>
+            </div>
+            <div class="hcard-bottom">
+              <div class="hcard-contact">+91 XXXXX XXXXX<br>hello@yourcompany.com<br>linkedin.com/in/you</div>
+              <div class="hcard-tap">
+                <div class="hcard-tap-dot"></div>
+                <div class="hcard-tap-text">TAP</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- INTERACTIVE DEMO -->
+<section class="demo-s" id="demo" aria-label="Interactive demo">
+  <div class="container">
+    <div class="demo-box">
+      <h2 style="font-size:24px;font-weight:700;margin-bottom:8px">Try It Yourself</h2>
+      <p style="font-size:14px;color:#9a97a0;margin-bottom:32px">Click below to simulate what the <em>other person's phone</em> shows when they tap your card</p>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#5a5765;text-transform:uppercase;margin-bottom:10px;opacity:0.7">Their phone</div>
+      <div class="demo-phone"><div class="demo-notch"></div>
+        <div class="demo-scr">
+          <div id="demoWait"><p style="font-size:32px;margin-bottom:12px">&#128241;</p><p style="color:#9a97a0;font-size:13px">Waiting for NFC tap...</p><p style="font-size:11px;color:#5a5765;margin-top:8px">Tap the button below</p></div>
+          <div class="demo-prof" id="demoProf">
+            <div class="demo-av">RK</div>
+            <div style="font-size:15px;font-weight:700">Rahul Kumar</div>
+            <div style="font-size:10px;color:#4f8cff">Product Designer</div>
+            <div style="display:flex;flex-direction:column;gap:6px;width:100%;margin-top:6px">
+              <div class="demo-lnk">&#128222; Save Contact</div>
+              <div class="demo-lnk">&#128279; LinkedIn Profile</div>
+              <div class="demo-lnk">&#128247; Portfolio Website</div>
+              <div class="demo-lnk">&#128172; WhatsApp Chat</div>
+              <div class="demo-lnk">&#128197; Book a Meeting</div>
+              <div class="demo-lnk">&#128196; Download Resume</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="tbtn" id="tapBtn" onclick="doTap()">&#9889; Simulate Tap</button>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ HOW IT WORKS ════════════ -->
+<section class="how" id="how" aria-label="How it works">
+  <div class="container">
+    <div class="section-eyebrow">How it works</div>
+    <div class="section-title">Three seconds. <em>That's it.</em></div>
+    <p class="section-sub">No app to download. No QR code to scan. No URL to type. Just tap and connect.</p>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <h3>Tap</h3>
+        <p>Hold your Tappd card against anyone's smartphone. The NFC chip does the rest — instantly, silently, effortlessly.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <h3>View</h3>
+        <p>Their phone opens your digital profile — photo, name, title, phone, email, LinkedIn, portfolio, and every link that matters.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <h3>Save</h3>
+        <p>One tap on "Save Contact" and you're in their phone forever. Not in a drawer. Not in the trash. In their contacts.</p>
+      </div>
+    </div>
+
+    <div id="features" style="margin-top:72px;">
+      <div class="section-eyebrow">Why Tappd</div>
+      <div class="section-title">Built to make you <em>unforgettable.</em></div>
+      <p class="section-sub">Every feature exists for one reason: you never miss a connection again.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat">
+        <span class="feat-icon">♾️</span>
+        <h3>Update Forever. Never Reprint.</h3>
+        <p>New job? New number? Just edit your online profile. Your physical card always shows the latest info. One card for your entire career.</p>
+      </div>
+      <div class="feat">
+        <span class="feat-icon">📱</span>
+        <h3>Works on Every Phone</h3>
+        <p>iPhone, Samsung, Pixel, OnePlus, Xiaomi — if it was made in the last 5 years, it works. Plus every card includes a QR code fallback.</p>
+      </div>
+      <div class="feat">
+        <span class="feat-icon">🔗</span>
+        <h3>Everything in One Tap</h3>
+        <p>LinkedIn, Instagram, portfolio, Calendly, WhatsApp, UPI payment, PDF resume — your entire professional world, shared instantly.</p>
+      </div>
+      <div class="feat">
+        <span class="feat-icon">♻️</span>
+        <h3>10,000 Paper Cards Saved</h3>
+        <p>One Tappd card replaces every paper card you'd print in a lifetime. Better for the planet. Better for your wallet.</p>
+      </div>
+      <div class="feat">
+        <span class="feat-icon">🎨</span>
+        <h3>Designed to Impress</h3>
+        <p>Premium PVC and metal finishes. Custom designs for your profession. A card people don't just keep — they talk about.</p>
+      </div>
+      <div class="feat">
+        <span class="feat-icon">🔒</span>
+        <h3>Your Data, Your Rules</h3>
+        <p>Control exactly what's visible. Show your portfolio to clients, your resume to recruiters, your socials to friends. Toggle anytime.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ PRICING ════════════ -->
+<section class="pricing" id="pricing" aria-label="Pricing">
+  <div class="container">
+    <div class="section-eyebrow">Pricing</div>
+    <div class="section-title">Simple pricing. <em>No subscriptions.</em></div>
+    <p class="section-sub">Pay once. Use forever. Every card includes a custom digital profile and free updates for life.</p>
+    <div class="price-grid">
+
+      <!-- CAMPUS -->
+      <div class="price-card">
+        <div class="price-tier">CAMPUS</div>
+        <div class="price-amount">₹299 <span>/ card</span></div>
+        <div class="price-period">White PVC Card</div>
+        <ul class="price-features">
+          <li>Name, title &amp; phone on card</li>
+          <li>Digital profile page</li>
+          <li>NFC chip + QR code</li>
+          <li>Save Contact button</li>
+          <li>1 social/website link</li>
+          <li>Unlimited free updates</li>
+        </ul>
+        <a href="#order" class="price-btn price-btn-secondary">Get Started</a>
+        <p class="price-value-note">Perfect for students &amp; freshers entering the market</p>
+      </div>
+
+      <!-- PROFESSIONAL (decoy) -->
+      <div class="price-card featured">
+        <div class="price-badge">RECOMMENDED</div>
+        <div class="price-tier">PROFESSIONAL</div>
+        <div class="price-amount">₹799 <span>/ card</span></div>
+        <div class="price-period">Custom Matte / Glossy PVC</div>
+        <ul class="price-features">
+          <li>Everything in Campus</li>
+          <li>Full custom card design</li>
+          <li>Unlimited links &amp; social profiles</li>
+          <li>Lead capture form (get contacts back)</li>
+          <li>Priority design support</li>
+          <li>WhatsApp &amp; email on profile</li>
+        </ul>
+        <a href="#order" class="price-btn price-btn-primary">Get Started</a>
+        <p class="price-value-note">Best for freelancers, agents &amp; growing professionals</p>
+      </div>
+
+      <!-- EXECUTIVE (target) -->
+      <div class="price-card exec-card">
+        <div class="price-badge-gold">★ BEST VALUE</div>
+        <div class="price-tier">EXECUTIVE</div>
+        <div class="price-amount">₹1,299 <span>/ card</span></div>
+        <div class="price-period">Premium Metal Card — Laser Engraved</div>
+        <ul class="price-features">
+          <li>Everything in Professional</li>
+          <li>Solid metal card, laser engraved</li>
+          <li>Velvet gift packaging</li>
+          <li>White-glove setup call</li>
+          <li>Profile goes live in 24 hrs</li>
+          <li>Priority delivery</li>
+        </ul>
+        <a href="#order" class="price-btn price-btn-primary" style="background:linear-gradient(135deg,#f5c542,#d97706);color:#1a1200;">Order Executive</a>
+        <p class="price-value-note">Only ₹500 more than Professional — for a card that lasts a lifetime</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════ POST-PURCHASE JOURNEY ════════════ -->
+<section class="process" id="process" aria-label="How your order is fulfilled">
+  <div class="container">
+    <div class="section-eyebrow">Your journey</div>
+    <div class="section-title">From order to <em>first tap.</em></div>
+    <p class="section-sub">Here's exactly what happens after you place an order — no guesswork, no delays.</p>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="process-step-num">01</div>
+        <div>
+          <div class="process-step-icon">🛒</div>
+          <div class="process-step-title">Order Placed</div>
+          <div class="process-step-sub">You submit the form. We receive your details on WhatsApp instantly.</div>
+          <div class="process-step-time">Day 0</div>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="process-step-num">02</div>
+        <div>
+          <div class="process-step-icon">📞</div>
+          <div class="process-step-title">Design Call</div>
+          <div class="process-step-sub">We call or WhatsApp you to confirm your profile info, links, and design preferences.</div>
+          <div class="process-step-time">Within 24 hrs</div>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="process-step-num">03</div>
+        <div>
+          <div class="process-step-icon">🌐</div>
+          <div class="process-step-title">Profile Live</div>
+          <div class="process-step-sub">Your digital profile is set up, reviewed with you, and goes live. Share the link instantly.</div>
+          <div class="process-step-time">Within 24 hrs</div>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="process-step-num">04</div>
+        <div>
+          <div class="process-step-icon">🏭</div>
+          <div class="process-step-title">Card Production</div>
+          <div class="process-step-sub">Your card is printed, NFC chip programmed, QR added, and quality-checked.</div>
+          <div class="process-step-time">2–3 days</div>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="process-step-num">05</div>
+        <div>
+          <div class="process-step-icon">🚚</div>
+          <div class="process-step-title">Delivered</div>
+          <div class="process-step-sub">Your card arrives at your door. Tap it — your profile opens in under 2 seconds.</div>
+          <div class="process-step-time">5–7 business days</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ LIVE PROFILES ════════════ -->
+<section class="live-profiles" aria-label="Live profile examples">
+  <div class="container">
+    <div class="section-eyebrow">See it live</div>
+    <div class="section-title">See it <em>in action.</em></div>
+    <p class="section-sub">Every profile, live and tappable. This is exactly what someone sees when they tap your card.</p>
+    <div class="profiles-grid">
+      <a href="u/jignesh/" class="pcard pcard-amber" target="_blank">
+        <div class="pcard-avatar">JS</div>
+        <div class="pcard-name">Jignesh Shah</div>
+        <div class="pcard-title">CEO · Veer Cooker &amp; Cookware LLP</div>
+        <div class="pcard-cta">View live card →</div>
+      </a>
+      <a href="u/kalim/" class="pcard pcard-blue" target="_blank">
+        <div class="pcard-avatar">KK</div>
+        <div class="pcard-name">Dr. Kalim Khan</div>
+        <div class="pcard-title">Managing Director · Brains Trust India</div>
+        <div class="pcard-cta">View live card →</div>
+      </a>
+      <a href="b/subscriptionloot/" class="pcard pcard-purple" target="_blank">
+        <div class="pcard-avatar">🎁</div>
+        <div class="pcard-name">SubscriptionLoot</div>
+        <div class="pcard-title">Brand · Premium Subscriptions</div>
+        <div class="pcard-cta">View live card →</div>
+      </a>
+      <div class="pcard pcard-sample" style="border-top:2px solid;border-image:linear-gradient(90deg,#10b981,#06d6a0) 1;">
+        <div class="pcard-avatar" style="background:linear-gradient(135deg,#10b981,#06d6a0)">PS</div>
+        <div class="pcard-name">Priya Sharma</div>
+        <div class="pcard-title">HR Manager · Infosys · Mumbai</div>
+        <div class="pcard-cta" style="opacity:0.4">Sample profile</div>
+      </div>
+      <div class="pcard pcard-sample" style="border-top:2px solid;border-image:linear-gradient(90deg,#f43f5e,#fb7185) 1;">
+        <div class="pcard-avatar" style="background:linear-gradient(135deg,#f43f5e,#fb7185)">VN</div>
+        <div class="pcard-name">Dr. Vikram Nair</div>
+        <div class="pcard-title">Cardiologist · Kokilaben Hospital</div>
+        <div class="pcard-cta" style="opacity:0.4">Sample profile</div>
+      </div>
+      <div class="pcard pcard-sample" style="border-top:2px solid;border-image:linear-gradient(90deg,#f97316,#fb923c) 1;">
+        <div class="pcard-avatar" style="background:linear-gradient(135deg,#f97316,#fb923c)">🏥</div>
+        <div class="pcard-name">Mehta Medicals</div>
+        <div class="pcard-title">Brand · Pharmacy &amp; Healthcare</div>
+        <div class="pcard-cta" style="opacity:0.4">Sample profile</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section style="padding:100px 0" aria-label="Testimonials">
+  <div class="container">
+    <div class="section-eyebrow">What people say</div>
+    <div class="section-title">Loved by <em>professionals.</em></div>
+    <p class="section-sub">Don't take our word for it.</p>
+    <div class="test-grid" style="grid-template-columns:repeat(3,1fr)">
+      <div class="test-card"><div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="test-q">"Used it at a startup event. Tapped my card on an investor's phone — they were genuinely impressed. Got a meeting the next day."</p><div class="test-a"><div class="test-av" style="background:linear-gradient(135deg,#4f8cff,#22d3ee)">AK</div><div><div style="font-size:13px;font-weight:600">Arjun Kapoor</div><div style="font-size:11px;color:#5a5765">Startup Founder · Pune</div></div></div></div>
+      <div class="test-card"><div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="test-q">"My students love it. I tap their phone and they instantly get my office hours, course links, and Google Scholar profile."</p><div class="test-a"><div class="test-av" style="background:linear-gradient(135deg,#7c3aed,#a78bfa)">SM</div><div><div style="font-size:13px;font-weight:600">Dr. Sneha Menon</div><div style="font-size:11px;color:#5a5765">University Professor · Bangalore</div></div></div></div>
+      <div class="test-card"><div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="test-q">"I meet 15+ clients daily. This replaced my entire paper card budget. Clients save my contact every single time."</p><div class="test-a"><div class="test-av" style="background:linear-gradient(135deg,#f59e0b,#d97706)">RP</div><div><div style="font-size:13px;font-weight:600">Rajesh Patil</div><div style="font-size:11px;color:#5a5765">Real Estate Agent · Mumbai</div></div></div></div>
+      <div class="test-card"><div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="test-q">"Ordered the Executive metal card for our pharmacy. Patients and doctors are genuinely surprised when they tap it. Sets us apart instantly."</p><div class="test-a"><div class="test-av" style="background:linear-gradient(135deg,#10b981,#06d6a0)">NM</div><div><div style="font-size:13px;font-weight:600">Nikhil Mehta</div><div style="font-size:11px;color:#5a5765">Owner · Mehta Medicals, Thane</div></div></div></div>
+      <div class="test-card"><div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="test-q">"Got Tappd before campus placements. Three recruiters asked me how it worked. Landed two interviews from those conversations alone."</p><div class="test-a"><div class="test-av" style="background:linear-gradient(135deg,#f43f5e,#fb7185)">PT</div><div><div style="font-size:13px;font-weight:600">Pooja Tiwari</div><div style="font-size:11px;color:#5a5765">Engineering Student · IIT Bombay</div></div></div></div>
+      <div class="test-card"><div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="test-q">"As a freelance designer, my portfolio is everything. Now I just tap and they're looking at my work in 2 seconds. Closed two clients in one evening."</p><div class="test-a"><div class="test-av" style="background:linear-gradient(135deg,#f97316,#fb923c)">RD</div><div><div style="font-size:13px;font-weight:600">Riya Desai</div><div style="font-size:11px;color:#5a5765">Freelance Designer · Ahmedabad</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ AUDIENCE ════════════ -->
+<section class="audience" id="audience" aria-label="Who its for">
+  <div class="container">
+    <div class="section-eyebrow">Who it's for</div>
+    <div class="section-title">Made for people who <em>mean business.</em></div>
+    <p class="section-sub">Whether you're a student at a career fair or a CEO at a conference — Tappd makes you memorable.</p>
+    <div class="aud-grid">
+      <div class="aud-card">
+        <div class="aud-icon">🎓</div>
+        <h3>Students &amp; Graduates</h3>
+        <p>Stand out at placements and career fairs. Share your resume, LinkedIn, and portfolio with one tap.</p>
+      </div>
+      <div class="aud-card">
+        <div class="aud-icon">🚀</div>
+        <h3>Startup Founders</h3>
+        <p>Network with investors, partners, and talent. Share your pitch deck and Calendly instantly.</p>
+      </div>
+      <div class="aud-card">
+        <div class="aud-icon">🎨</div>
+        <h3>Freelancers &amp; Creators</h3>
+        <p>Showcase your portfolio, media kit, and social profiles. Let your work speak with a single tap.</p>
+      </div>
+      <div class="aud-card">
+        <div class="aud-icon">💼</div>
+        <h3>Corporate Teams</h3>
+        <p>Equip your sales team with branded smart cards. Track networking analytics across the team.</p>
+      </div>
+      <div class="aud-card">
+        <div class="aud-icon">🏠</div>
+        <h3>Real Estate Agents</h3>
+        <p>Share property listings, virtual tours, and Google Reviews. One card replaces thousands.</p>
+      </div>
+      <div class="aud-card">
+        <div class="aud-icon">🎓</div>
+        <h3>Professors &amp; Researchers</h3>
+        <p>Link to Google Scholar, research papers, office hours booking, and course materials.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════ PULL QUOTE ════════════ -->
+<section class="pull-quote-s" aria-label="Brand quote">
+  <div class="container">
+    <blockquote>
+      Paper cards get thrown away.<br>Smart cards get remembered.
+      <cite>— The Tappd philosophy</cite>
+    </blockquote>
+  </div>
+</section>
+
+<!-- ORDER FORM -->
+<section class="order-s" id="order" aria-label="Order form">
+  <div class="container">
+    <div class="section-eyebrow">Get yours</div>
+    <div class="section-title">Order your <em>Tappd</em> card</div>
+    <p class="section-sub">Fill in your details. We design, program, and deliver within 5–7 business days.</p>
+    <div class="order-grid">
+      <div>
+        <h3 style="font-size:20px;font-weight:700;margin-bottom:12px">What you'll get</h3>
+        <p style="font-size:14px;color:#9a97a0;line-height:1.7">Every Tappd card includes custom design, programmed NFC chip, QR fallback, digital profile page, and lifetime free updates.</p>
+        <div class="order-ben">
+          <div class="order-b">Custom card design tailored to your profession</div>
+          <div class="order-b">Digital profile page set up for you</div>
+          <div class="order-b">NFC chip programmed with your unique link</div>
+          <div class="order-b">QR code printed on card back</div>
+          <div class="order-b">Delivered within 5–7 business days</div>
+          <div class="order-b">Unlimited profile updates, forever, free</div>
+          <div class="order-b">WhatsApp support for any questions</div>
+        </div>
+      </div>
+      <div>
+        <form class="order-form" id="orderForm" onsubmit="handleOrder(event)" novalidate>
+          <div class="form-row"><div class="fg2"><label for="fname">Full Name *</label><input type="text" id="fname" required placeholder="Your full name"></div>
+          <div class="fg2"><label for="fphone">Phone *</label><input type="tel" id="fphone" required placeholder="+91 XXXXX XXXXX"></div></div>
+          <div class="fg2"><label for="femail">Email</label><input type="email" id="femail" placeholder="you@email.com"></div>
+          <div class="form-row"><div class="fg2"><label for="ftier">Card Tier *</label><select id="ftier" required><option value="">Select tier</option><option value="Campus (INR 299)">Campus &#8212; &#8377;299</option><option value="Professional (INR 799)">Professional &#8212; &#8377;799</option><option value="Executive (INR 1299)">Executive &#8212; &#8377;1,299</option></select></div>
+          <div class="fg2"><label for="fqty">Quantity</label><input type="number" id="fqty" value="1" min="1" max="100"></div></div>
+          <div class="fg2"><label for="fprof">Your Profession</label><input type="text" id="fprof" placeholder="e.g., Student, Founder, Agent"></div>
+          <div class="fg2"><label for="fnotes">Anything else?</label><textarea id="fnotes" placeholder="Design preferences, social links, etc."></textarea></div>
+          <div id="formError" style="display:none;padding:10px 14px;border-radius:8px;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);color:#ef4444;font-size:13px;"></div>
+          <button type="submit" class="fsb">Submit Order Request</button>
+        </form>
+        <div class="form-ok" id="formOk"><h3>&#9989; Order Received!</h3><p style="font-size:14px;color:#9a97a0">We'll reach out on WhatsApp within 24 hours to confirm design and payment.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ FAQ ════════════ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="section-eyebrow">FAQ</div>
+    <div class="section-title">Questions? <em>Answered.</em></div>
+    <p class="section-sub">Everything you need to know before ordering.</p>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <h3>Do I need an app to use Tappd?</h3>
+        <p>No. The receiver doesn't need any app. They hold their phone near your card and the profile opens automatically in their browser. Works on iPhone XS+ and all modern Androids.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What if their phone doesn't have NFC?</h3>
+        <p>Every Tappd card includes a QR code on the back. They scan it with their camera for the same experience. 100% of smartphones are covered.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Can I update my info after ordering?</h3>
+        <p>Yes, unlimited times, forever, for free. Your card points to a digital profile that you can edit anytime. New job, new number — just update online. The physical card never needs to change.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How long does the card last?</h3>
+        <p>The NFC chip has 10-year data retention and can be read hundreds of thousands of times. The PVC card is waterproof and highly durable. Designed to outlast your career.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How long does delivery take?</h3>
+        <p>5–7 business days from order confirmation. We design your card, set up your digital profile, program the NFC chip, and ship it to your door.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Can I order in bulk for my team?</h3>
+        <p>Absolutely. We offer 10–30% discounts on bulk orders of 5+ cards. Contact us via WhatsApp for custom corporate pricing with branded designs and team management.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Is my information secure?</h3>
+        <p>Yes. Your profile only shows what you choose to share. We never sell your data. No login, no tracking cookies, no third-party data collection. You're always in control.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What if I lose my card?</h3>
+        <p>Your digital profile stays live forever. Order a replacement at a discounted reprint fee — the NFC chip is reprogrammed to your existing profile URL, so everything works immediately.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Can I see how many people tapped my card?</h3>
+        <p>Tap analytics are on our roadmap. For now, the lead capture form lets visitors share their contact with you — so you always know who reached out.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Do you deliver all across India?</h3>
+        <p>Yes, pan-India via courier. Standard delivery is 5–7 business days from order confirmation. We share the tracking link once your card is dispatched.</p>
+      </div>
+      <div class="faq-item" style="grid-column:1/-1">
+        <h3>What's included in the Executive "white-glove setup"?</h3>
+        <p>A Tappd team member personally calls you to build your profile — uploading your photo, setting up all your links, writing your bio, and testing the card before it ships. You don't need to touch a computer. Just review and approve.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+</main>
+
+<!-- Floating WhatsApp -->
+<a href="https://wa.me/919082160882?text=Hi%20Tappd!%20I%27d%20like%20to%20order%20a%20smart%20business%20card." class="wa-float" target="_blank" aria-label="Chat on WhatsApp">💬</a>
+
+<!-- ════════════ FOOTER ════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <div class="footer-brand">Tap<span>Karo</span></div>
+        <div class="footer-tagline">"Paper cards get thrown away. Smart cards get remembered."</div>
+        <div style="margin-top:10px;font-size:11px;color:var(--t3);line-height:1.8">
+          Mumbai, India &nbsp;·&nbsp; Founded by Harsh Padia<br>
+          <a href="mailto:padia.harsh@gmail.com" style="color:var(--blue);text-decoration:none">padia.harsh@gmail.com</a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="#how">How It Works</a>
+        <a href="#process">Process</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="https://instagram.com/Tappd" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://wa.me/919082160882?text=Hi%20Tappd!" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="yr"></span> Tappd · Mumbai, India · All rights reserved · One tap. Every connection.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ═══ Copyright year ═══
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+// ═══ Scroll reveal ═══
+const obs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.step-card, .feat, .price-card, .aud-card, .test-card, .faq-item').forEach(function(el) {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = 'all 0.6s ease';
+  obs.observe(el);
+});
+
+// ═══ Nav scroll effect + back-to-top ═══
+window.addEventListener('scroll', function() {
+  var nav = document.querySelector('nav');
+  var btt = document.getElementById('btt');
+  if (window.scrollY > 50) {
+    nav.style.background = 'rgba(6,6,9,0.92)';
+  } else {
+    nav.style.background = 'rgba(6,6,9,0.7)';
+  }
+  if (btt) {
+    if (window.scrollY > 500) { btt.classList.add('vis'); }
+    else { btt.classList.remove('vis'); }
+  }
+});
+
+// ═══ Mobile menu ═══
+function toggleMenu() {
+  var ham = document.querySelector('.hamburger');
+  var mm = document.querySelector('.mobile-menu');
+  if (!ham || !mm) return;
+  var isOpen = ham.getAttribute('aria-expanded') === 'true';
+  ham.setAttribute('aria-expanded', !isOpen);
+  ham.classList.toggle('active');
+  mm.classList.toggle('open');
+}
+function closeMenu() {
+  var ham = document.querySelector('.hamburger');
+  var mm = document.querySelector('.mobile-menu');
+  if (ham) { ham.setAttribute('aria-expanded', 'false'); ham.classList.remove('active'); }
+  if (mm) { mm.classList.remove('open'); }
+}
+
+// ═══ Simulate NFC Tap ═══
+function doTap() {
+  var wait = document.getElementById('demoWait');
+  var prof = document.getElementById('demoProf');
+  var btn = document.getElementById('tapBtn');
+
+  if (!wait || !prof || !btn) {
+    console.error('Demo elements not found');
+    return;
+  }
+
+  // Hide waiting state
+  wait.style.display = 'none';
+
+  // Show profile
+  prof.style.display = 'flex';
+  prof.classList.add('on');
+
+  // Update button
+  btn.innerHTML = '&#9989; Profile Opened!';
+  btn.classList.add('done');
+
+  // Reset button after 4 seconds
+  setTimeout(function() {
+    btn.innerHTML = '&#9889; Simulate Tap';
+    btn.classList.remove('done');
+    btn.style.pointerEvents = 'auto';
+  }, 4000);
+
+  // Reset entire demo after 5 seconds
+  setTimeout(function() {
+    prof.style.display = 'none';
+    prof.classList.remove('on');
+    wait.style.display = 'block';
+  }, 5000);
+}
+
+// ═══ Order Form → Google Sheets + WhatsApp ═══
+function handleOrder(e) {
+  e.preventDefault();
+
+  var name = document.getElementById('fname').value.trim();
+  var phone = document.getElementById('fphone').value.trim();
+  var email = document.getElementById('femail').value.trim() || 'N/A';
+  var tier = document.getElementById('ftier').value;
+  var qty = document.getElementById('fqty').value;
+  var prof = document.getElementById('fprof').value.trim() || 'N/A';
+  var notes = document.getElementById('fnotes').value.trim() || 'None';
+
+  if (!name || !phone || !tier) {
+    var errEl = document.getElementById('formError');
+    if (errEl) {
+      errEl.textContent = 'Please fill in your Name, Phone, and Card Tier to continue.';
+      errEl.style.display = 'block';
+      errEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    return;
+  }
+  var errEl = document.getElementById('formError');
+  if (errEl) errEl.style.display = 'none';
+
+  // Disable submit button to prevent double-clicks
+  var submitBtn = document.querySelector('.fsb');
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Submitting...';
+
+  // ══ STEP 1: Send to Google Sheets ══
+  // REPLACE THIS URL with your Google Apps Script web app URL
+  var GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_SCRIPT_URL_HERE';
+
+  var orderData = {
+    name: name,
+    phone: phone,
+    email: email,
+    tier: tier,
+    quantity: qty,
+    profession: prof,
+    notes: notes
+  };
+
+  // Send to Google Sheets (non-blocking — doesn't stop WhatsApp if it fails)
+  if (GOOGLE_SCRIPT_URL !== 'YOUR_GOOGLE_SCRIPT_URL_HERE') {
+    fetch(GOOGLE_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(orderData)
+    }).then(function() {
+      console.log('Order saved to Google Sheets');
+    }).catch(function(err) {
+      console.log('Sheet save failed (order still sent to WhatsApp):', err);
+    });
+  }
+
+  // ══ STEP 2: Show success message ══
+  document.getElementById('orderForm').style.display = 'none';
+  document.getElementById('formOk').classList.add('show');
+
+  // ══ STEP 3: Open WhatsApp with pre-filled order ══
+  var msg = 'Hi Tappd! I would like to order:' +
+    '%0A%0AName: ' + encodeURIComponent(name) +
+    '%0APhone: ' + encodeURIComponent(phone) +
+    '%0AEmail: ' + encodeURIComponent(email) +
+    '%0ATier: ' + encodeURIComponent(tier) +
+    '%0AQty: ' + qty +
+    '%0AProfession: ' + encodeURIComponent(prof) +
+    '%0ANotes: ' + encodeURIComponent(notes);
+
+  setTimeout(function() {
+    window.open('https://wa.me/919082160882?text=' + msg, '_blank');
+  }, 1200);
+}
+
+</script>
+
+<!-- Back to top button -->
+<button class="btt" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&#8593;</button>
+
+</body>
+</html>

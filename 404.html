@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page Not Found | Tappd</title>
+<meta name="description" content="This page doesn't exist. Head back to Tappd — Smart NFC Business Cards.">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="assets/img/favicon-16x16.png" type="image/png" sizes="16x16">
+<link rel="icon" href="assets/img/favicon-32x32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="assets/img/site.webmanifest">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;800&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Outfit', sans-serif;
+  background: #060609;
+  color: #f0ede6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 32px 24px;
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: '';
+  position: fixed;
+  top: 30%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px; height: 400px;
+  background: radial-gradient(ellipse, rgba(79,140,255,0.04) 0%, transparent 65%);
+  pointer-events: none;
+}
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  z-index: 9999; pointer-events: none; opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.wrap { position: relative; z-index: 2; max-width: 480px; }
+.err-code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(80px, 18vw, 120px);
+  font-weight: 700;
+  letter-spacing: -4px;
+  background: linear-gradient(135deg, #4f8cff, #22d3ee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 16px;
+  animation: fadeUp 0.6s ease both;
+}
+h1 {
+  font-size: 22px; font-weight: 700; margin-bottom: 10px;
+  animation: fadeUp 0.6s ease 0.1s both;
+}
+p {
+  font-size: 14px; color: #9a97a0; line-height: 1.65;
+  margin-bottom: 32px;
+  animation: fadeUp 0.6s ease 0.15s both;
+}
+.btn-row {
+  display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+  animation: fadeUp 0.6s ease 0.2s both;
+}
+.btn-home {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 28px; border-radius: 10px;
+  background: #f0ede6; color: #060609;
+  font-size: 13px; font-weight: 700; text-decoration: none; transition: all 0.3s;
+}
+.btn-home:hover { background: #4f8cff; color: #fff; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(79,140,255,0.2); }
+.btn-wa {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 28px; border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.06); color: #9a97a0;
+  font-size: 13px; font-weight: 600; text-decoration: none; transition: all 0.3s;
+}
+.btn-wa:hover { border-color: #25d366; color: #25d366; transform: translateY(-2px); }
+
+.divider { width: 40px; height: 1px; background: rgba(255,255,255,0.06); margin: 40px auto 28px; }
+
+.profile-links-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px; letter-spacing: 3px; color: #5a5765;
+  text-transform: uppercase; margin-bottom: 14px;
+}
+.profile-list {
+  display: flex; flex-direction: column; gap: 8px;
+  animation: fadeUp 0.6s ease 0.25s both;
+}
+.profile-link {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 16px; border-radius: 10px;
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+  text-decoration: none; color: #f0ede6;
+  font-size: 13px; font-weight: 600; transition: all 0.25s;
+}
+.profile-link:hover { border-color: rgba(79,140,255,0.2); transform: translateX(3px); }
+.profile-link-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+.footer-note {
+  margin-top: 40px;
+  font-size: 11px; color: #5a5765;
+  animation: fadeUp 0.6s ease 0.3s both;
+}
+.footer-note a { color: #4f8cff; text-decoration: none; font-weight: 600; }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="err-code">404</div>
+  <h1>Page not found</h1>
+  <p>The page you're looking for doesn't exist, was moved, or the link is incorrect.<br>Here's where you can go instead:</p>
+  <div class="btn-row">
+    <a href="./" class="btn-home">← Back to Tappd</a>
+    <a href="https://wa.me/919082160882?text=Hi%20Tappd!%20I%20got%20a%20404%20error." target="_blank" class="btn-wa">💬 Contact Us</a>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="profile-links-label">Active Profiles</div>
+  <div class="profile-list">
+    <a href="u/jignesh/" class="profile-link">
+      <span class="profile-link-dot" style="background:#f59e0b"></span>
+      Jignesh Shah — CEO, Veer Cooker &amp; Cookware
+    </a>
+    <a href="u/kalim/" class="profile-link">
+      <span class="profile-link-dot" style="background:#4f8cff"></span>
+      Dr. Kalim Khan — Managing Director, Brains Trust India
+    </a>
+    <a href="b/subscriptionloot/" class="profile-link">
+      <span class="profile-link-dot" style="background:#a855f7"></span>
+      SubscriptionLoot — Premium Subscriptions
+    </a>
+  </div>
+
+  <div class="footer-note">
+    <a href="https://harsh-padia.github.io/Tappd">Tappd</a> · Smart NFC Business Cards · India
+  </div>
+</div>
+</body>
+</html>

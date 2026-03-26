@@ -1,0 +1,86 @@
+/* ── Tappd Brand CSS (business/brand profiles) ── */
+
+/* Profile wrapper */
+.profile { max-width: 420px; width: 100%; position: relative; z-index: 2; }
+
+/* Brand header card */
+.brand-header {
+  text-align: center; padding: 32px 24px 28px;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 20px; position: relative; overflow: hidden;
+  margin-bottom: 12px;
+}
+.brand-header::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  border-radius: 20px 20px 0 0;
+}
+.brand-header::after {
+  content: '';
+  position: absolute; top: -40px; right: -40px;
+  width: 180px; height: 180px;
+  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Logo */
+.logo-wrap  { position: relative; display: inline-flex; margin-bottom: 16px; }
+.logo-ring  {
+  width: 84px; height: 84px; border-radius: 20px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  padding: 2.5px; display: flex; align-items: center; justify-content: center;
+}
+.logo-inner {
+  width: 100%; height: 100%; border-radius: 18px;
+  background: var(--card2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px; font-weight: 900;
+}
+
+/* Brand name / tagline */
+.brand-name    { font-size: 24px; font-weight: 900; letter-spacing: -0.5px; margin-bottom: 4px; }
+.brand-name span {
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.brand-tagline { font-size: 12px; color: var(--t2); margin-bottom: 16px; }
+
+/* Trust bar */
+.trust-bar {
+  display: flex; align-items: center; justify-content: center; gap: 16px;
+  padding: 12px 0;
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+}
+.trust-item { display: flex; align-items: center; gap: 5px; font-size: 10px; color: var(--t3); }
+.trust-dot  { width: 5px; height: 5px; border-radius: 50%; background: var(--green); }
+
+/* Primary CTA */
+.btn-primary-cta {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  width: 100%; padding: 15px 20px; border-radius: 14px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #fff; font-size: 14px; font-weight: 700;
+  border: none; cursor: pointer; transition: all 0.3s;
+  margin-bottom: 12px; font-family: 'Outfit', sans-serif;
+  text-decoration: none; box-shadow: 0 8px 24px var(--accent-dim);
+}
+.btn-primary-cta:hover { transform: translateY(-2px); box-shadow: 0 12px 32px var(--accent-dim); }
+
+/* Stats row */
+.stats-row {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 12px;
+}
+.stat-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 14px 10px; text-align: center;
+}
+.stat-num   { font-size: 20px; font-weight: 800; letter-spacing: -0.5px; }
+.stat-label { font-size: 9px; color: var(--t3); letter-spacing: 0.5px; margin-top: 2px; }
+
+/* Staggered entrance animations */
+.brand-header    { animation: fadeUp 0.5s ease both; }
+.btn-primary-cta { animation: fadeUp 0.5s ease 0.06s both; }
+.stats-row       { animation: fadeUp 0.5s ease 0.1s both; }
+.links-wrap      { animation: fadeUp 0.5s ease 0.14s both; }
+.utility-row     { animation: fadeUp 0.5s ease 0.18s both; }
